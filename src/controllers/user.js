@@ -1,13 +1,12 @@
 // External Modules:
 const createError = require('http-errors')
-const Creator = require('../models/Creator')
 
 // Internal Modules:
 const People = require('../models/people')
 const {
   peopleProjection,
   creatorProjection,
-} = require('../models/Projection.Schema')
+} = require('../models/Projections_Schema')
 const { unlinkSingleImage } = require('../utils/files')
 
 /**
@@ -21,11 +20,8 @@ const findOneById = async (req, res, next) => {
     // Retrive User By Id
     let query = { _id: req.params.id }
     let user = await People.findOne(query, peopleProjection)
-    let creator = await Creator.findOne(
-      { user: req.params.id },
-      creatorProjection
-    )
-    res.status(200).json({ user, creator })
+
+    res.status(200).json({ user })
   } catch (error) {
     next(createError(500, error))
   }

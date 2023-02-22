@@ -8,15 +8,10 @@ const ParentSchema = mongoose.Schema(
     mobile: { type: String, unique: true },
     email: { type: String, unique: true },
     password: { type: String, required: true },
+    relation: String,
     avatar: {
       type: String,
       default: `${process.env.APP_URL}/default/avatar.jpg`,
-    },
-    address: {
-      street: String,
-      city: String,
-      state: String,
-      zip_code: String,
     },
     children: [
       {

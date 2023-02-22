@@ -45,731 +45,927 @@ const globalData = {
   ],
 }
 
+// Teachers Data:
+const TeachersData = [
+  {
+    teacher_name: 'John Smith',
+    mobile: '555-555-5555',
+    email: 'john.smith@example.com',
+    password: 'Password@1234',
+    dob: '1980-01-01',
+    department: 'Mathematics',
+    qualifications: [
+      "Bachelor's Degree in Mathematics",
+      "Master's Degree in Mathematics",
+    ],
+    address: {
+      street: '123 Main St.',
+      city: 'New York',
+      state: 'NY',
+      zipcode: '10001',
+    },
+  },
+  {
+    teacher_name: 'Jane Doe',
+    mobile: '555-555-5556',
+    email: 'jane.doe@example.com',
+    password: 'Password@1234',
+    dob: '1985-02-01',
+    department: 'Science',
+    qualifications: ["Bachelor's Degree in Biology", 'Ph.D. in Biology'],
+    address: {
+      street: '456 Elm St.',
+      city: 'Boston',
+      state: 'MA',
+      zipcode: '02115',
+    },
+  },
+  {
+    teacher_name: 'David Lee',
+    mobile: '555-555-5557',
+    email: 'david.lee@example.com',
+    password: 'Password@1234',
+    dob: '1982-03-01',
+    department: 'Social Studies',
+    qualifications: ["Bachelor's Degree in History"],
+    address: {
+      street: '789 Oak St.',
+      city: 'Chicago',
+      state: 'IL',
+      zipcode: '60601',
+    },
+  },
+  {
+    teacher_name: 'Maria Rodriguez',
+    mobile: '555-555-5558',
+    email: 'maria.rodriguez@example.com',
+    password: 'Password@1234',
+    dob: '1978-04-01',
+    department: 'Languages',
+    qualifications: [
+      "Bachelor's Degree in Spanish",
+      "Master's Degree in Spanish",
+    ],
+    address: {
+      street: '321 Pine St.',
+      city: 'Miami',
+      state: 'FL',
+      zipcode: '33131',
+    },
+  },
+  {
+    teacher_name: 'Chris Johnson',
+    mobile: '555-555-5559',
+    email: 'chris.johnson@example.com',
+    password: 'Password@1234',
+    dob: '1987-05-01',
+    department: 'Physical Education',
+    qualifications: ["Bachelor's Degree in Physical Education"],
+    address: {
+      street: '654 Cedar St.',
+      city: 'Los Angeles',
+      state: 'CA',
+      zipcode: '90001',
+    },
+  },
+  {
+    teacher_name: 'Samantha Lee',
+    mobile: '555-555-5560',
+    email: 'samantha.lee@example.com',
+    password: 'Password@1234',
+    dob: '1984-06-01',
+    department: 'Mathematics',
+    qualifications: [
+      "Bachelor's Degree in Mathematics",
+      "Master's Degree in Mathematics",
+      'Ph.D. in Mathematics',
+    ],
+    address: {
+      street: '987 Maple St.',
+      city: 'Seattle',
+      state: 'WA',
+      zipcode: '98101',
+    },
+  },
+]
+
 const UsersData = [
   {
-    firstName: 'Nazmul',
-    lastName: 'Huda',
-    email: 'nazmul@gmail.com',
-    username: 'nazmul',
-    about:
-      "I'm a self-taught passionate Web Application Developer specialized in MERN Stack Web Development. JavaScript is my native programming language. I use HTML, CSS, and Tailwind to design a perfect responsive website template and give them life using React.JS. I can develop scalable REST APIs using Node.JS, Express.JS and MongoDB and connect them with front-end single page applications. Use Redux for State management & RTK Query for Caching and Revalidation.",
-    mobile: '+8801746000000',
-    dob: new Date(2001, 12),
-    avatar: 'https://avatars.githubusercontent.com/u/58470993',
+    name: 'John Smith',
+    username: 'jsmith',
+    password: 'Password@1234',
+    email: 'jsmith@example.com',
+    mobile: '555-555-5555',
+    about: 'I am a software engineer.',
+    dob: '1990-01-01',
+    gender: 'male',
   },
   {
-    firstName: 'Sumit',
-    lastName: 'Saha',
-    email: 'sumit@gmail.com',
-    username: 'sumit',
-    about:
-      "I'm a self-taught passionate Web Application Developer specialized in MERN Stack Web Development. JavaScript is my native programming language. I use HTML, CSS, and Tailwind to design a perfect responsive website template and give them life using React.JS. I can develop scalable REST APIs using Node.JS, Express.JS and MongoDB and connect them with front-end single page applications. Use Redux for State management & RTK Query for Caching and Revalidation.",
-    mobile: '+8801746000001',
-    dob: new Date(2003, 4),
-    avatar: 'https://avatars.githubusercontent.com/u/73503432?v=4',
+    name: 'Jane Doe',
+    username: 'jdoe',
+    password: 'Password@1234',
+    email: 'jdoe@example.com',
+    mobile: '555-555-5556',
+    about: 'I am a marketing specialist.',
+    dob: '1992-02-01',
+    gender: 'female',
   },
   {
-    firstName: 'Jhanker',
-    lastName: 'Mahabub',
-    email: 'jhankar@gmail.com',
-    username: 'jhankar',
-    about:
-      "I'm a self-taught passionate Web Application Developer specialized in MERN Stack Web Development. JavaScript is my native programming language. I use HTML, CSS, and Tailwind to design a perfect responsive website template and give them life using React.JS. I can develop scalable REST APIs using Node.JS, Express.JS and MongoDB and connect them with front-end single page applications. Use Redux for State management & RTK Query for Caching and Revalidation.",
-    mobile: '+8801746000002',
-    dob: new Date(1991, 10),
-    avatar: 'https://avatars.githubusercontent.com/u/53802153?v=4',
+    name: 'David Lee',
+    username: 'dlee',
+    password: 'Password@1234',
+    email: 'dlee@example.com',
+    mobile: '555-555-5557',
+    about: 'I am a business analyst.',
+    dob: '1988-03-01',
+    gender: 'male',
   },
   {
-    firstName: 'Brad',
-    lastName: 'Traversy',
-    email: 'traversy@gmail.com',
-    username: 'traversy',
-    about:
-      "I'm a self-taught passionate Web Application Developer specialized in MERN Stack Web Development. JavaScript is my native programming language. I use HTML, CSS, and Tailwind to design a perfect responsive website template and give them life using React.JS. I can develop scalable REST APIs using Node.JS, Express.JS and MongoDB and connect them with front-end single page applications. Use Redux for State management & RTK Query for Caching and Revalidation.",
-    mobile: '+8801746000003',
-    dob: new Date(1992, 9),
-    avatar: 'https://avatars.githubusercontent.com/u/5550850?v=4',
+    name: 'Maria Rodriguez',
+    username: 'mrodriguez',
+    password: 'Password@1234',
+    email: 'mrodriguez@example.com',
+    mobile: '555-555-5558',
+    about: 'I am a graphic designer.',
+    dob: '1995-04-01',
+    gender: 'female',
   },
   {
-    firstName: 'Fayzul',
-    lastName: 'Karim',
-    email: 'fayzul@gmail.com',
-    username: 'fayzul',
-    about:
-      "I'm a self-taught passionate Web Application Developer specialized in MERN Stack Web Development. JavaScript is my native programming language. I use HTML, CSS, and Tailwind to design a perfect responsive website template and give them life using React.JS. I can develop scalable REST APIs using Node.JS, Express.JS and MongoDB and connect them with front-end single page applications. Use Redux for State management & RTK Query for Caching and Revalidation.",
-    mobile: '+8801746000004',
-    dob: new Date(1993, 7),
-    avatar: 'https://avatars.githubusercontent.com/u/497812?v=4',
+    name: 'Chris Johnson',
+    username: 'cjohnson',
+    password: 'Password@1234',
+    email: 'cjohnson@example.com',
+    mobile: '555-555-5559',
+    about: 'I am a fitness trainer.',
+    dob: '1993-05-01',
+    gender: 'male',
   },
   {
-    firstName: 'Sunny',
-    lastName: 'Sungha',
-    email: 'sunny@gmail.com',
-    username: 'sunny',
-    about:
-      "I'm a self-taught passionate Web Application Developer specialized in MERN Stack Web Development. JavaScript is my native programming language. I use HTML, CSS, and Tailwind to design a perfect responsive website template and give them life using React.JS. I can develop scalable REST APIs using Node.JS, Express.JS and MongoDB and connect them with front-end single page applications. Use Redux for State management & RTK Query for Caching and Revalidation.",
-    mobile: '+8801746000005',
-    dob: new Date(1994, 8),
-    avatar: 'https://avatars.githubusercontent.com/u/24712956?v=4',
+    name: 'Samantha Lee',
+    username: 'slee',
+    password: 'Password@1234',
+    email: 'slee@example.com',
+    mobile: '555-555-5560',
+    about: 'I am a writer.',
+    dob: '1991-06-01',
+    gender: 'female',
   },
   {
-    firstName: 'Adrian',
-    lastName: 'Twrag',
-    email: 'adrian@gmail.com',
-    username: 'adrian',
-    about:
-      "I'm a self-taught passionate Web Application Developer specialized in MERN Stack Web Development. JavaScript is my native programming language. I use HTML, CSS, and Tailwind to design a perfect responsive website template and give them life using React.JS. I can develop scalable REST APIs using Node.JS, Express.JS and MongoDB and connect them with front-end single page applications. Use Redux for State management & RTK Query for Caching and Revalidation.",
-    mobile: '+8801746000006',
-    dob: new Date(1995, 1),
-    avatar: 'https://avatars.githubusercontent.com/u/22957728?v=4',
+    name: 'Michael Kim',
+    username: 'mkim',
+    password: 'Password@1234',
+    email: 'mkim@example.com',
+    mobile: '555-555-5561',
+    about: 'I am a software developer.',
+    dob: '1989-07-01',
+    gender: 'male',
   },
   {
-    firstName: 'Tanvir',
-    lastName: 'Hasan',
-    email: 'tanvir@gmail.com',
-    username: 'tanvir',
-    about:
-      "I'm a self-taught passionate Web Application Developer specialized in MERN Stack Web Development. JavaScript is my native programming language. I use HTML, CSS, and Tailwind to design a perfect responsive website template and give them life using React.JS. I can develop scalable REST APIs using Node.JS, Express.JS and MongoDB and connect them with front-end single page applications. Use Redux for State management & RTK Query for Caching and Revalidation.",
-    mobile: '+8801746000007',
-    dob: new Date(1996, 3),
-    avatar: 'https://avatars.githubusercontent.com/u/2250509?v=4',
+    name: 'Amanda Nguyen',
+    username: 'anguyen',
+    password: 'Password@1234',
+    email: 'anguyen@example.com',
+    mobile: '555-555-5562',
+    about: 'I am a human resources specialist.',
+    dob: '1994-08-01',
+    gender: 'female',
   },
   {
-    firstName: 'Hasin',
-    lastName: 'Hayder',
-    email: 'hasin@gmail.com',
-    username: 'hasin',
-    about:
-      "I'm a self-taught passionate Web Application Developer specialized in MERN Stack Web Development. JavaScript is my native programming language. I use HTML, CSS, and Tailwind to design a perfect responsive website template and give them life using React.JS. I can develop scalable REST APIs using Node.JS, Express.JS and MongoDB and connect them with front-end single page applications. Use Redux for State management & RTK Query for Caching and Revalidation.",
-    mobile: '+8801746000008',
-    dob: new Date(1997, 6),
-    avatar: 'https://avatars.githubusercontent.com/u/490779?v=4',
+    name: 'Mark Brown',
+    username: 'mbrown',
+    password: 'Password@1234',
+    email: 'mbrown@example.com',
+    mobile: '555-555-5563',
+    about: 'I am a sales representative.',
+    dob: '1996-09-01',
+    gender: 'male',
+  },
+  {
+    name: 'Laura Martinez',
+    username: 'lmartinez',
+    password: 'Password@1234',
+    email: 'lmartinez@example.com',
+    mobile: '555-555-5564',
+    about: 'I am a customer service representative.',
+    dob: '1997-10-01',
+    gender: 'female',
   },
 ]
 
-const TweetsData = [
+const StudentData = [
   {
-    id: 1,
-    description:
-      'The car on the left has a gas engine and gets 20 MPG. It has 21 miles of electric range. It gets a $7,500 EV Tax Credit.',
-    attacments: [
-      'https://pbs.twimg.com/media/FlahAyvWIAAl2GE.jpg',
-      'https://pbs.twimg.com/media/FlahDwGWYAQUf-F.jpg',
+    student_name: 'John Smith',
+    roll_number: '2023001',
+    mobile: '555-555-5555',
+    email: 'jsmith@example.com',
+    password: 'Password@1234',
+    dob: '2005-06-12',
+    gender: 'Male',
+    blood_group: 'A+',
+    address: {
+      street: '987 Maple St.',
+      city: 'Seattle',
+      state: 'WA',
+      zipcode: '98101',
+    },
+  },
+  {
+    student_name: 'Jane Doe',
+    roll_number: '2023002',
+    mobile: '555-555-5556',
+    email: 'jdoe@example.com',
+    password: 'Password@1234',
+    dob: '2005-07-15',
+    gender: 'Female',
+    blood_group: 'B+',
+    address: {
+      street: '987 Maple St.',
+      city: 'Seattle',
+      state: 'WA',
+      zipcode: '98101',
+    },
+  },
+  {
+    student_name: 'Bob Johnson',
+    roll_number: '2023003',
+    mobile: '555-555-5557',
+    email: 'bjohnson@example.com',
+    password: 'Password@1234',
+    dob: '2006-02-10',
+    gender: 'Male',
+    blood_group: 'AB+',
+    address: {
+      street: '987 Maple St.',
+      city: 'Seattle',
+      state: 'WA',
+      zipcode: '98101',
+    },
+  },
+  {
+    student_name: 'Alice Smith',
+    roll_number: '2023004',
+    mobile: '555-555-5558',
+    email: 'asmith@example.com',
+    password: 'Password@1234',
+    dob: '2004-12-20',
+    gender: 'Female',
+    blood_group: 'O+',
+    address: {
+      street: '987 Maple St.',
+      city: 'Seattle',
+      state: 'WA',
+      zipcode: '98101',
+    },
+  },
+  {
+    student_name: 'David Jones',
+    roll_number: '2023005',
+    mobile: '555-555-5559',
+    email: 'djones@example.com',
+    password: 'Password@1234',
+    dob: '2005-10-30',
+    gender: 'Male',
+    blood_group: 'A-',
+    address: {
+      street: '987 Maple St.',
+      city: 'Seattle',
+      state: 'WA',
+      zipcode: '98101',
+    },
+  },
+  {
+    student_name: 'Emily Davis',
+    roll_number: '2023006',
+    mobile: '555-555-5560',
+    email: 'edavis@example.com',
+    password: 'Password@1234',
+    dob: '2006-03-25',
+    gender: 'Female',
+    blood_group: 'B-',
+    address: {
+      street: '987 Maple St.',
+      city: 'Seattle',
+      state: 'WA',
+      zipcode: '98101',
+    },
+  },
+  {
+    student_name: 'Alex Rodriguez',
+    roll_number: '2023007',
+    mobile: '555-555-5561',
+    email: 'arodriguez@example.com',
+    password: 'Password@1234',
+    dob: '2004-11-05',
+    gender: 'Male',
+    blood_group: 'AB-',
+    address: {
+      street: '987 Maple St.',
+      city: 'Seattle',
+      state: 'WA',
+      zipcode: '98101',
+    },
+  },
+  {
+    student_name: 'Samantha Lee',
+    roll_number: '2023008',
+    mobile: '555-555-5562',
+    email: 'slee@example.com',
+    password: 'Password@1234',
+    dob: '2005-09-15',
+    gender: 'Female',
+    blood_group: 'O-',
+    address: {
+      street: '987 Maple St.',
+      city: 'Seattle',
+      state: 'WA',
+      zipcode: '98101',
+    },
+  },
+  {
+    student_name: 'George Wilson',
+    roll_number: '2023009',
+    mobile: '555-555-5563',
+    email: 'gwilson@example.com',
+    password: 'Password@1234',
+    dob: '2006-01-01',
+    gender: 'Male',
+    blood_group: 'A+',
+    address: {
+      street: '987 Maple St.',
+      city: 'Seattle',
+      state: 'WA',
+      zipcode: '98101',
+    },
+  },
+]
+
+const ParentData = [
+  {
+    parent_name: 'John Smith Sr.',
+    mobile: '555-555-5555',
+    email: 'jsmithsr@example.com',
+    password: 'Password@1234',
+    relation: 'Father',
+  },
+  {
+    parent_name: 'Jane Doe Sr.',
+    mobile: '555-555-5556',
+    email: 'jdoesr@example.com',
+    password: 'Password@1234',
+    relation: 'Mother',
+  },
+  {
+    parent_name: 'Alex Johnson',
+    mobile: '555-555-5557',
+    email: 'ajohnson@example.com',
+    password: 'Password@1234',
+    relation: 'Guardian',
+  },
+  {
+    parent_name: 'Maria Garcia',
+    mobile: '555-555-5558',
+    email: 'mgarcia@example.com',
+    password: 'Password@1234',
+    relation: 'Mother',
+  },
+  {
+    parent_name: 'David Lee',
+    mobile: '555-555-5559',
+    email: 'dlee@example.com',
+    password: 'Password@1234',
+    relation: 'Father',
+  },
+  {
+    parent_name: 'Sophia Chen',
+    mobile: '555-555-5560',
+    email: 'schen@example.com',
+    password: 'Password@1234',
+    relation: 'Guardian',
+  },
+  {
+    parent_name: 'William Davis',
+    mobile: '555-555-5561',
+    email: 'wdavis@example.com',
+    password: 'Password@1234',
+    relation: 'Father',
+  },
+  {
+    parent_name: 'Emily Brown',
+    mobile: '555-555-5562',
+    email: 'ebrown@example.com',
+    password: 'Password@1234',
+    relation: 'Mother',
+  },
+  {
+    parent_name: 'Daniel Kim',
+    mobile: '555-555-5563',
+    email: 'dkim@example.com',
+    password: 'Password@1234',
+    relation: 'Father',
+  },
+  {
+    parent_name: 'Isabella Martinez',
+    mobile: '555-555-5564',
+    email: 'imartinez@example.com',
+    password: 'Password@1234',
+    relation: 'Mother',
+  },
+]
+
+const SubjectData = [
+  {
+    subject_name: 'Mathematics',
+    syllabus: ['Algebra', 'Geometry', 'Trigonometry', 'Calculus'],
+  },
+  {
+    subject_name: 'English',
+    syllabus: ['Grammar', 'Literature', 'Writing'],
+  },
+  {
+    subject_name: 'Science',
+    syllabus: ['Biology', 'Chemistry', 'Physics'],
+  },
+  {
+    subject_name: 'Social Studies',
+    syllabus: ['History', 'Geography', 'Civics'],
+  },
+  {
+    subject_name: 'Computer Science',
+    syllabus: ['Programming', 'Data Structures', 'Algorithms'],
+  },
+  {
+    subject_name: 'Art',
+    syllabus: ['Drawing', 'Painting', 'Sculpture'],
+  },
+  {
+    subject_name: 'Music',
+    syllabus: ['Theory', 'Composition', 'Performance'],
+  },
+  {
+    subject_name: 'Physical Education',
+    syllabus: ['Sports', 'Fitness', 'Health'],
+  },
+  {
+    subject_name: 'Languages',
+    syllabus: ['French', 'Spanish', 'German'],
+  },
+  {
+    subject_name: 'Economics',
+    syllabus: ['Microeconomics', 'Macroeconomics', 'International Trade'],
+  },
+]
+
+const ClassData = [
+  {
+    class_name: 1,
+    number_of_students: 20,
+    schedule: [
+      {
+        day: '2023-02-14',
+        start_time: '08:30',
+        end_time: '10:00',
+      },
+      {
+        day: '2023-02-16',
+        start_time: '09:00',
+        end_time: '11:00',
+      },
     ],
   },
   {
-    id: 2,
-    description: 'ChatGPT, but in iMessage',
-    attacments: ['https://pbs.twimg.com/media/Fljwgl2aUAAAM7a.jpg'],
-  },
-  {
-    id: 3,
-    description:
-      'Do you want to enjoy amazing space pictures every time you browse the internet?',
-    attacments: ['https://pbs.twimg.com/media/FljY1tRX0AElSuD.jpg'],
-  },
-  {
-    id: 4,
-    description: '✨Southern Crab Nebula✨',
-    attacments: ['https://pbs.twimg.com/media/Flmj-qHWYAMBvoN.jpg'],
-  },
-  {
-    id: 5,
-    description:
-      'We’ve got more work to do, but this year, we signed historic legislation to lower costs for working families and seniors, help keep our communities safe from gun violence, and create good-paying jobs across the country.',
-    attacments: ['https://pbs.twimg.com/media/FlV07CcXgAYuuCe.jpg'],
-  },
-  {
-    id: 6,
-    description:
-      'Jill and I hope everyone is able to spend time with family and friends during the holiday season. We’re also holding a special place in our hearts for anyone missing a loved one during this time.',
-    attacments: ['https://pbs.twimg.com/media/Fkw9LMoXwAQegj_.jpg'],
-  },
-  {
-    id: 7,
-    description: 'Some nights ….',
-    attacments: ['https://https://pbs.twimg.com/media/Fk9Oy_iWIAEx8Qd.jpg'],
-  },
-  {
-    id: 8,
-    description: 'New Tesla Supercharger: Seoul-Daechi, South Korea (9 stalls)',
-    attacments: ['https://pbs.twimg.com/media/Floj16CWYAEurr9.jpg'],
-  },
-  {
-    id: 9,
-    description:
-      'In preparation for the Polaris Dawn mission’s planned spacewalk, the crew participated in a decompression sickness risk characterization study in the 20 Foot Chamber at NASA’s Johnson Space Center',
-    attacments: ['https://pbs.twimg.com/media/FllB-2IXkAAeIcA.jpg'],
-  },
-  {
-    id: 10,
-    description:
-      'In preparation for the Polaris Dawn mission’s planned spacewalk, the crew participated in a decompression sickness risk characterization study in the 20 Foot Chamber at NASA’s Johnson Space Center',
-    attacments: ['https://pbs.twimg.com/media/FllB-2IXkAAeIcA.jpg'],
-  },
-  {
-    id: 11,
-    description:
-      'Falcon 9 launches SpaceX’s sixth dedicated smallsat rideshare mission – completing our 200th successful launch!',
-    attacments: ['https://pbs.twimg.com/media/FlkxppEaEAINU5T.jpg'],
-  },
-  {
-    id: 12,
-    description:
-      'Congrats to the 4680 cell team on achieving 868k cells built in the last 7 days—equal to 1k+ cars!',
-    attacments: ['https://pbs.twimg.com/media/Fk1_jJAWYAIi0da.jpg'],
-  },
-  {
-    id: 13,
-    description: 'Supercharging powered by the sun ☀️',
-    attacments: ['https://pbs.twimg.com/media/Fkgz5v6WAAEDSsf.jpg'],
-  },
-  {
-    id: 14,
-    description: '60 Minutes Interviews Population Control Expert Thanos',
-    attacments: [
-      'https://pbs.twimg.com/card_img/1610405372530933760/9h4VKqer.jpg',
+    class_name: 2,
+    number_of_students: 18,
+    schedule: [
+      {
+        day: '2023-02-13',
+        start_time: '10:00',
+        end_time: '11:30',
+      },
+      {
+        day: '2023-02-15',
+        start_time: '11:00',
+        end_time: '13:00',
+      },
     ],
   },
   {
-    id: 15,
-    description:
-      'Leo Messi honored by his teammates, coaching staff and Training Center staff',
-    attacments: ['https://pbs.twimg.com/media/FlnziAoXoAEDyc6.jpg'],
-  },
-  {
-    id: 16,
-    description: 'Real goat 🐐🐐🐐',
-    attacments: ['https://pbs.twimg.com/media/Fln9I9bXgAIKZtr.jpg'],
-  },
-  {
-    id: 17,
-    description: 'Lets Embrace n Conquer 2023 👑',
-    attacments: ['https://pbs.twimg.com/media/FlXLB5aXkAA-3ku.jpg'],
-  },
-  {
-    id: 18,
-    description: 'jus a moment from nov that made me v happy :)',
-    attacments: ['https://pbs.twimg.com/media/FlERFVCacAEqYTQ.jpg'],
-  },
-  {
-    id: 19,
-    description:
-      'P.S.- pandemic weddings ke bhi after-party invites arahe hain😍!! Whattæ festive time 🪬💖',
-    attacments: ['https://pbs.twimg.com/media/FkbE6XHVUAAuWiH.jpg'],
-  },
-  {
-    id: 20,
-    description:
-      'Beauty is being the best possible version of yourself, inside and out ✨',
-    attacments: ['https://pbs.twimg.com/media/FjgkmMGVIAAb9SP.jpg'],
-  },
-  {
-    id: 21,
-    description:
-      'reveals bright starbirth around the center of a spiral galaxy 220 light-years from Earth in the Pegasus constellation. The background is awash with other galaxies and stars. Imagine the worlds within!',
-    attacments: ['https://pbs.twimg.com/media/FlkPRpHXkAYixdt.jpg'],
-  },
-  {
-    id: 22,
-    description: 'Thumbs up for a new challenge 💪',
-    attacments: ['https://pbs.twimg.com/media/Flk9DR7XEAEZ8Gf.jpg'],
-  },
-  {
-    id: 23,
-    description: 'Don’t call yourself a gamer if you never played this game',
-    attacments: ['https://pbs.twimg.com/media/Fle84c6XEAEmSwa.jpg'],
-  },
-  {
-    id: 24,
-    description: 'Premiering on your screens tomorrow!',
-    attacments: ['https://pbs.twimg.com/media/FlmtaxXacAAt5ie.jpg'],
-  },
-  {
-    id: 25,
-    description:
-      'In 2022, Tesla Model Y took the #1 spot for the most American 🇺🇸 made car.  Here’s a 🧵from that report with videoUrls.',
-    attacments: ['https://pbs.twimg.com/media/Flg9d7tXgAEj-9Y.jpg'],
-  },
-  {
-    id: 26,
-    description:
-      'PSG will face Al-Nassr in a friendly match in January. Most probably the last meeting between Messi & Ronaldo! 🇦🇷🇵🇹🐐🐐',
-    attacments: ['https://pbs.twimg.com/media/FljnfxpWQAAvTbI.jpg'],
-  },
-  {
-    id: 27,
-    description:
-      'Chinese commercial space company Space Pioneer is planning for the first launch of its Tianlong-2 kerolox rocket this year, which we can now see vertical. 2 tons to LEO, 35 meters high, standard 3.35m Long March diameter. Could be the first Chinese private launcher to orbit...',
-    attacments: ['https://pbs.twimg.com/media/Floj16CWYAEurr9.jpg'],
-  },
-  {
-    id: 28,
-    description: 'One day gas stations will become as nostalgic as pay phones',
-    attacments: ['https://pbs.twimg.com/media/FlgZ5QnaAAAvXxE.jpg'],
-  },
-  {
-    id: 29,
-    description:
-      '"Amiraali Ivan Vasiljev väitti, että mustaa savua tuotetaan tietoisesti . Hänen mukaansa tavoitteena on osoittaa näyttävästi, että Venäjän laivasto on paikalla.',
-    attacments: [
-      'https://pbs.twimg.com/card_img/1609265469428535296/jdzQGTPI.jpg',
+    class_name: 3,
+    number_of_students: 25,
+    schedule: [
+      {
+        day: '2023-02-14',
+        start_time: '11:00',
+        end_time: '12:30',
+      },
+      {
+        day: '2023-02-16',
+        start_time: '10:30',
+        end_time: '12:00',
+      },
     ],
   },
   {
-    id: 30,
-    description:
-      '🎆What a year this has been and what a FIFA World Cup Qatar 2022 we saw.',
-    attacments: ['https://pbs.twimg.com/media/FlVKrFiXoAAJqoB.jpg'],
+    class_name: 4,
+    number_of_students: 22,
+    schedule: [
+      {
+        day: '2023-02-12',
+        start_time: '09:30',
+        end_time: '11:00',
+      },
+      {
+        day: '2023-02-14',
+        start_time: '10:00',
+        end_time: '12:00',
+      },
+    ],
+  },
+  {
+    class_name: 5,
+    number_of_students: 19,
+    schedule: [
+      {
+        day: '2023-02-13',
+        start_time: '13:00',
+        end_time: '14:30',
+      },
+      {
+        day: '2023-02-15',
+        start_time: '14:00',
+        end_time: '16:00',
+      },
+    ],
+  },
+  {
+    class_name: 6,
+    number_of_students: 21,
+    schedule: [
+      {
+        day: '2023-02-12',
+        start_time: '13:30',
+        end_time: '15:00',
+      },
+      {
+        day: '2023-02-14',
+        start_time: '14:00',
+        end_time: '16:00',
+      },
+    ],
+  },
+  {
+    class_name: 7,
+    number_of_students: 23,
+    schedule: [
+      {
+        day: '2023-02-13',
+        start_time: '09:30',
+        end_time: '11:00',
+      },
+      {
+        day: '2023-02-15',
+        start_time: '10:00',
+        end_time: '12:00',
+      },
+    ],
   },
 ]
 
-const VideosData = [
+const AttendanceData = [
   {
-    id: 1,
-    title: 'Top Ten REact Developers Mistakes',
-    description:
-      'Biginers commont top ten mistakes, this video helps biginer to fix commonly faces issues in first time react js development',
-    duration: 54830889,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/6O4s7v28nlw',
-    thumbnail: 'https://i3.ytimg.com/vi/6O4s7v28nlw/maxresdefault.jpg',
-    tags: ['javascript', 'react', 'tips'],
+    date: '2023-02-12',
+    class: '',
+    attendance: [
+      {
+        student: '',
+        status: 'present',
+      },
+      {
+        student: '',
+        status: 'absent',
+      },
+    ],
   },
   {
-    id: 2,
-    title: 'Creates A Virtual Talking Friend with Just 5 Lines of Python',
-    description:
-      ' For new python developer, pyttsx3 is a cool little library to convert text to speech. This simple tutorial will help to create something simple and fun.',
-    duration: 2349809,
-    videoUrl: 'https://www.youtube.com/embed/nbX4MBzB_rg',
-    thumbnail: 'https://i3.ytimg.com/vi/nbX4MBzB_rg/maxresdefault.jpg',
-    tags: ['python', 'automation'],
+    date: '2023-02-11',
+    class: '',
+    attendance: [
+      {
+        student: '',
+        status: 'present',
+      },
+      {
+        student: '',
+        status: 'present',
+      },
+    ],
   },
   {
-    id: 3,
-    title: 'React JS Crash Course',
-    description:
-      'Get started with React in this crash course. We will be building a task tracker app and look at components, props, state, hooks, working with an API and more.',
-    author: 'Traversy Media',
-
-    duration: 9045830,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/w7ejDZ8SWv8',
-    thumbnail: 'https://i3.ytimg.com/vi/w7ejDZ8SWv8/maxresdefault.jpg',
-    tags: ['react', 'javascript'],
+    date: '2023-02-10',
+    class: '',
+    attendance: [
+      {
+        student: '',
+        status: 'absent',
+      },
+      {
+        student: '',
+        status: 'present',
+      },
+    ],
   },
   {
-    id: 4,
-    title: 'VS Code Snippets - Boost your productivity with User Snippets',
-    description:
-      'Boost your productivity with User Snippets Boost your productivity with User Snippets Boost your productivity with User Snippets Boost your productivity with User Snippets',
-    duration: 7493323,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/N-U6AVcIPy4',
-    thumbnail: 'https://i3.ytimg.com/vi/N-U6AVcIPy4/maxresdefault.jpg',
-    tags: ['vscode', 'tips'],
+    date: '2023-02-09',
+    class: '',
+    attendance: [
+      {
+        student: '',
+        status: 'absent',
+      },
+      {
+        student: '',
+        status: 'absent',
+      },
+    ],
   },
   {
-    id: 5,
-    title:
-      'How to Automate WhatsApp with 15 lines of Python Code || Learn Python || Python for beginner',
-    description:
-      ' I was looking for a cool project to demonstrate my Python knowledge and then I found a video by twillio api in this video https://www.youtube.com/watch?v=O2PB6. Then I found this article by Kartik Nighania to automate whats app message.I wanted to make my own version and explore Heroku.Any one beginner in python might be inspired by this and build their own',
-    duration: 4923082,
-    videoUrl: 'https://www.youtube.com/embed/pQeFxdT3FGY',
-    thumbnail: 'https://i3.ytimg.com/vi/pQeFxdT3FGY/maxresdefault.jpg',
-    tags: ['python', 'automation'],
+    date: '2023-02-08',
+    class: '',
+    attendance: [
+      {
+        student: '',
+        status: 'present',
+      },
+      {
+        student: '',
+        status: 'present',
+      },
+    ],
   },
   {
-    id: 6,
-    title: ' Static Blog With Next.js and Markdown',
-    description: ' Create a basic blog using Next.js and Markdown.',
-    duration: 489232,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/MrjeefD8sac',
-    thumbnail: 'https://i3.ytimg.com/vi/MrjeefD8sac/maxresdefault.jpg',
-    tags: ['nextjs', 'javascript'],
-  },
-  {
-    id: 7,
-    title:
-      'Tailwind CSS 3 tutorial - Upgrade to Tailwind 3 | Tailwind CSS Bangla Tutorial',
-    description:
-      'Tailwind CSS v3.0 came with incredible performance gains, huge workflow improvements, and a seriously ridiculous number of new features. In this tutorial - I have tried to explain different new features of Tailwind CSS version 3, how to install tailwind css 3, how to upgrade from tailwind v2 to v3 etc.',
-    duration: 2492338,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/4M7D3O2XX4o',
-    thumbnail: 'https://i3.ytimg.com/vi/4M7D3O2XX4o/maxresdefault.jpg',
-    tags: ['tailwind', 'css'],
-  },
-  {
-    id: 8,
-    title:
-      "Don't Buy Scanner! Build your own smart scanner using 25 lines of python || opencv || Python Project",
-    description:
-      'Your wallet reminds you of the Sahara desert? But you need to scan documents right? This video is your saviour! ',
-    duration: 987423,
-    videoUrl: 'https://www.youtube.com/embed/MAwOPyOztDs',
-    thumbnail: 'https://i3.ytimg.com/vi/MAwOPyOztDs/maxresdefault.jpg',
-    tags: ['python', 'automation'],
-  },
-  {
-    id: 9,
-    title:
-      'Debounce Function in JavaScript - JavaScript Job Interview question',
-    description:
-      'In this video, I have explained about the debounce function in JavaScript. This is a common question interviewers ask at Job Interviews. If you watch this video carefully, you will understand what is debounce and how to handle it with custom debounce function.',
-    duration: 57320,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/dD9O8DnIBj4',
-    thumbnail: 'https://i3.ytimg.com/vi/dD9O8DnIBj4/maxresdefault.jpg',
-    tags: ['debounce', 'javascript', 'tips'],
-  },
-  {
-    id: 10,
-    title: 'Next.js Crash Course',
-    description:
-      'In this video we will look at the fundamentals of Next.js such as SSR & SSG, routing, data fetching, apis and more',
-    duration: 345083,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/mTz0GXj8NN0',
-    thumbnail: 'https://i3.ytimg.com/vi/mTz0GXj8NN0/maxresdefault.jpg',
-    tags: ['nextjs', 'javascript'],
-  },
-  {
-    id: 11,
-    title: 'SASS Tutorial in English - Overview of SASS',
-    description:
-      'In this video, I have given a high level overview of popular CSS Pre-processor SASS which helps us managing our styles at scale. If you have a basic understanding of CSS & JavaScript, this 10 mins SASS Tutorial will help you getting started with SASS.',
-    duration: 94200,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/4tV1Mfi4fMA',
-    thumbnail: 'https://i3.ytimg.com/vi/4tV1Mfi4fMA/maxresdefault.jpg',
-    tags: ['sass', 'css', 'ui'],
-  },
-  {
-    id: 12,
-    title:
-      "Don't Buy Alexa! Build Your Own. Create a Virtual Assistant with Python | Python Project | Jarvis AI",
-    description:
-      ' Programmers can get anything for free, even Alexa. Building your own (hot) personal assistant — how cool that is! 😁 You just need 20 lines of Python code. 😎',
-    duration: 98800,
-    videoUrl: 'https://www.youtube.com/embed/AWvsXxDtEkU',
-    thumbnail: 'https://i3.ytimg.com/vi/AWvsXxDtEkU/maxresdefault.jpg',
-    tags: ['python', 'automation'],
-  },
-  {
-    id: 13,
-    title:
-      'React Router DOMs v6 Bangla Tutorial - Breaking Changes - React Router 6 vs 5',
-    description:
-      'In this React Router DOM v6 Bangla tutorial, you will learn how to install react router dom 6, what are the breaking changes in react router 6, difference between react router 6 vs 5, how to upgrade from react router v5 to react router v6. ',
-    duration: 59900,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/34tjWL9wi4g',
-    thumbnail: 'https://i3.ytimg.com/vi/34tjWL9wi4g/maxresdefault.jpg',
-    tags: ['react', 'router', 'javascript'],
-  },
-  {
-    id: 14,
-    title:
-      'Learn and Master Python in 1 Month 🔥🔥🔥 Complete Python Guideline | How to get a Python Job in 2020',
-    description:
-      ' We are providing a complete guideline to learn python. Your wallet reminds you of the Sahara desert? But you need to scan documents right? This video is your saviour! . 😎',
-    duration: 32400,
-    videoUrl: 'https://www.youtube.com/embed/wECc7RPAr7s',
-    thumbnail: 'https://i3.ytimg.com/vi/wECc7RPAr7s/maxresdefault.jpg',
-    tags: ['python', 'automation'],
-  },
-  {
-    id: 15,
-    title: 'Tailwind CSS Tutorial Bangla - Introduction to Tailwind CSS',
-    description:
-      'Tailwind is a utility-first CSS framework to rapidly build modern websites without ever leaving your HTML. In this Tailwind CSS tutorial, I have given a short introduction and overview of Tailwind CSS in Bangla language. Also, I have explained, why Tailwind vs Bootstrap debate should be stopped as both are useful in their own ways.',
-    duration: 34000,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/smDa6hoxLKI',
-    thumbnail: 'https://i3.ytimg.com/vi/smDa6hoxLKI/maxresdefault.jpg',
-    tags: ['tailwind', 'css', 'ui'],
-  },
-  {
-    id: 16,
-    title: 'JavaScripts Crash Course For Beginners',
-    description:
-      'In this crash course we will go over the fundamentals of JavaScript including more modern syntax like classes, arrow functions, etc. This is the starting point on my channel for learning JS.',
-    duration: 30000,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/hdI2bqOjy3c',
-    thumbnail: 'https://i3.ytimg.com/vi/hdI2bqOjy3c/maxresdefault.jpg',
-    tags: ['javascript'],
-  },
-  {
-    id: 17,
-    title: '48 hours - the most isolated camp on earth',
-    description:
-      'This video was not sponsored by the US Navy; they provided access to the ICEX 2022 camp Special thank you to our X-Ray tier patrons: Carlos Patricio, David Cichowski, Eddie Sabbah, Fabrice Eap, Gil Chesterton, Isabel Herstek, Margaux Lopez, Matt Kaminski, Michael Schneider, Patrick Olson, Vikram Bhat, Vincent Argiro, wc993219',
-    duration: 270000,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/ap7-Wci2-8k',
-    thumbnail: 'https://i3.ytimg.com/vi/ap7-Wci2-8k/maxresdefault.jpg',
-    tags: ['isolated', 'earth'],
-  },
-  {
-    id: 18,
-    title: 'I dove in a NUCLEAR SUBMARINE (Frozen Ocean)',
-    description:
-      'Special thank you to our X-Ray tier patrons: Carlos Patricio, David Cichowski, Eddie Sabbah, Fabrice Eap, Gil Chesterton, Isabel Herstek, Margaux Lopez, Matt Kaminski, Michael Schneider, Patrick Olson, Vikram Bhat, Vincent Argiro, wc993219',
-    duration: 120000,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/JRQSbK4Krg0',
-    thumbnail: 'https://i3.ytimg.com/vi/JRQSbK4Krg0/maxresdefault.jpg',
-    tags: ['NUCLEAR SUBMARINE', 'Frozen Ocean'],
-  },
-  {
-    id: 19,
-    title: '8 Crazy pool vortex ',
-    description:
-      'Also thank you to Daniel Walsh for answering many fluid dynamics questions, to Jacob Schalch for filming the burning penny, and to Justin and Brendan for their donations to support Physics Girl!',
-    duration: 240000,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/pnbJEg9r1o8',
-    thumbnail: 'https://i3.ytimg.com/vi/pnbJEg9r1o8/maxresdefault.jpg',
-    tags: ['Crazy', 'vortex'],
-  },
-  {
-    id: 20,
-    title: 'We can see things moving faster than light',
-    description:
-      'Special thank you to our X-Ray tier patrons: Carlos Patricio, David Cichowski, Eddie Sabbah, Fabrice Eap, Gil Chesterton, Isabel Herstek, Margaux Lopez, Matt Kaminski, Michael Schneider, Patrick Olson, Vikram Bhat, Vincent Argiro, wc993219',
-    duration: 660000,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/q67vH0SKahU',
-    thumbnail: 'https://i3.ytimg.com/vi/q67vH0SKahU/maxresdefault.jpg',
-    tags: ['moving faster', 'light'],
-  },
-  {
-    id: 21,
-    title: 'Inside The Navy s Indoor Ocean',
-    description:
-      'Thanks to Kelley Stirling and the Naval Surface Warfare Center, Carderock Division for the visit.  Thanks to Miguel Quintero and Capt. Todd E. Hutchison for talking to us about the important work going on in the Maneuvering and Seakeeping Basin.',
-    duration: 1200000,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/pir_muTzYM8',
-    thumbnail: 'https://i3.ytimg.com/vi/pir_muTzYM8/maxresdefault.jpg',
-    tags: ['Navy', 'Ocean'],
-  },
-  {
-    id: 22,
-    title: 'Kobe Bryants Greatest Speech | BEST Motivation Ever',
-    description:
-      'In this powerful and emotional video, we will hear from a legend, a 5-time NBA champion, an 18-time All-Star, and an inductee of the Naismith Memorial Basketball Hall of Fame, Kobe Bryant. Bryant shares his best advice about what it’s like to have the “Mamba Mentality”. He talks about becoming who you want to be as long as you outwork everyone. We hope this video inspires you to take action in pursuing your dreams. Gone but never forgotten. RIP, Kobe ',
-    duration: 720000,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/dTRBnHtHehQ',
-    thumbnail: 'https://i3.ytimg.com/vi/dTRBnHtHehQ/maxresdefault.jpg',
-    tags: ['Greatest', 'Motivation'],
-  },
-  {
-    id: 23,
-    title:
-      'Transformers, explained: Understand the model behind GPT, BERT, and T5',
-    description:
-      'Over the past five years, Transformers, a neural network architecture, have completely transformed state-of-the-art natural language processing. Want to translate text with machine learning? Curious how an ML model could write a poem or an op ed? Transformers can do it all. In this episode of Making with ML, Dale Markowitz explains what transformers are, how they work, and why they’re so impactful. Watch to learn how you can start using transformers in your app!',
-    duration: 540000,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/SZorAJ4I-sA',
-    thumbnail: 'https://i3.ytimg.com/vi/SZorAJ4I-sA/maxresdefault.jpg',
-    tags: ['Understand', 'behind'],
-  },
-  {
-    id: 24,
-    title: 'API vs. SDK: Whats the difference?',
-    description:
-      'In this lightboard video, Nathan Hekman with IBM Cloud, answers these questions and much more while providing a real life scenario which explains the difference and similarities, and ultimately how the two technologies can work together to allow you to spend less time connecting/configuring a cloud service, and more time coding and actually using the service in your app',
-    duration: 540000,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/kG-fLp9BTRo',
-    thumbnail: 'https://i3.ytimg.com/vi/kG-fLp9BTRo/maxresdefault.jpg',
-    tags: ['SDK', 'difference'],
-  },
-  {
-    id: 25,
-    title: 'IELTS Speaking Interview | BAND 9 | Real Test! ',
-    description: 'Please share it on WhatsApp and Facebook!',
-    duration: 780000,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/V6twSFNeUk4',
-    thumbnail: 'https://i3.ytimg.com/vi/V6twSFNeUk4/maxresdefault.jpg',
-    tags: ['Speaking', 'BAND'],
-  },
-  {
-    id: 26,
-    title: 'TikTok C.E.O. Shou Chew on China, the Algorithm and More',
-    description:
-      'How did TikTok become the app that every other company is chasing? Where will the social media company go next? TikTok C.E.O. Shou Chew discussed at the 2022 DealBook summit with Andrew Ross Sorkin of The New York Times.',
-    duration: 156000,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/EE5Pcz99JFI',
-    thumbnail: 'https://i3.ytimg.com/vi/EE5Pcz99JFI/maxresdefault.jpg',
-    tags: ['China', 'Algorithm'],
-  },
-  {
-    id: 27,
-    title: 'Elon musk: "A degree means NOTHING" - Here!',
-    description:
-      'All music was licensed through MusicBed Music by Ryan Taubert',
-    duration: 600000,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/q50Vwu9Zgm8',
-    thumbnail: 'https://i3.ytimg.com/vi/q50Vwu9Zgm8/maxresdefault.jpg',
-    tags: ['NOTHING', 'Elon musk'],
-  },
-  {
-    id: 28,
-    title: 'Gwynne Shotwell, President and COO of SpaceX',
-    description:
-      'In this View From The Top, Christopher Stromeyer, MBA 22, sits down with Gwynne Shotwell, President and COO of SpaceX, to discuss balancing ambitious goals, putting people on Mars in a decade, leading collaboratively, and why she likes making decisions with data.',
-    duration: 2400000,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/1b-vAeYTxRA',
-    thumbnail: 'https://i3.ytimg.com/vi/1b-vAeYTxRA/maxresdefault.jpg',
-    tags: ['SpaceX', 'President'],
-  },
-  {
-    id: 29,
-    title: 'Inside The $5 Billion Apple Headquarters',
-    description:
-      'Despite its incredibly futuristic looks, the apple park has been a long time in the making, with Steve Jobs first announcing the project way back in 2006. ',
-    duration: 360000,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/FzcfZyEhOoI',
-    thumbnail: 'https://i3.ytimg.com/vi/FzcfZyEhOoI/maxresdefault.jpg',
-    tags: ['Billion', 'Apple Headquarters'],
-  },
-  {
-    id: 30,
-    title: 'How SpaceX Mastered Space Suits',
-    description:
-      'SpaceX began developing its first spacesuit all the way back in 2015. It took Hollywood costume designer Jose Fernandez several months to design a suit that looked as sleek as possible',
-    duration: 540000,
-    videoUrl: 'https://www.youtube-nocookie.com/embed/emp8sxbRpSQ',
-    thumbnail: 'https://i3.ytimg.com/vi/emp8sxbRpSQ/maxresdefault.jpg',
-    tags: ['Mastered', 'SpaceX'],
+    date: '2023-02-07',
+    class: '',
+    attendance: [
+      {
+        student: '',
+        status: 'absent',
+      },
+      {
+        student: '',
+        status: 'present',
+      },
+    ],
   },
 ]
 
-const CategoryData = [
+const EventData = [
   {
-    name: 'Beauty',
+    event_name: 'Annual Sports Day',
+    date: '2023-02-28',
+    startsAt: '09:00:00',
+    endsAt: '15:00:00',
+    venue: 'School Playground',
+    description: 'A day full of exciting sports events for all students.',
   },
   {
-    name: 'Comedy',
+    event_name: 'Parent-Teacher Meeting',
+    date: '2023-03-10',
+    startsAt: '16:00:00',
+    endsAt: '19:00:00',
+    venue: 'School Auditorium',
+    description:
+      "Opportunity for parents to meet their child's teachers and discuss academic progress.",
   },
   {
-    name: 'Songs',
+    event_name: 'Science Fair',
+    date: '2023-04-15',
+    startsAt: '10:00:00',
+    endsAt: '14:00:00',
+    venue: 'School Science Lab',
+    description:
+      'Students showcase their innovative and creative science projects.',
   },
   {
-    name: 'Gaming',
+    event_name: 'Annual Day Celebration',
+    date: '2023-05-20',
+    startsAt: '17:00:00',
+    endsAt: '21:00:00',
+    venue: 'School Auditorium',
+    description:
+      'A cultural extravaganza showcasing the talents of our students.',
   },
   {
-    name: 'Travel',
+    event_name: 'Field Trip',
+    date: '2023-06-05',
+    startsAt: '08:00:00',
+    endsAt: '16:00:00',
+    venue: 'City Zoo',
+    description:
+      'An educational and fun-filled trip to the zoo for our students.',
   },
   {
-    name: 'Techonology',
+    event_name: "Teacher's Day",
+    date: '2023-09-05',
+    startsAt: '10:00:00',
+    endsAt: '11:30:00',
+    venue: 'School Auditorium',
+    description:
+      'A special event to express gratitude and appreciation towards our teachers.',
   },
   {
-    name: 'Health and Fitness',
+    event_name: 'Independence Day Celebration',
+    date: '2023-08-15',
+    startsAt: '09:00:00',
+    endsAt: '10:30:00',
+    venue: 'School Ground',
+    description: "A patriotic event to celebrate India's Independence Day.",
   },
   {
-    name: 'Cooking',
+    event_name: 'Christmas Celebration',
+    date: '2023-12-25',
+    startsAt: '11:00:00',
+    endsAt: '13:00:00',
+    venue: 'School Auditorium',
+    description:
+      'A festive event to celebrate Christmas and spread joy and happiness.',
   },
   {
-    name: 'Do-it-yourself',
-  },
-  {
-    name: 'Lifestyle',
-  },
-  {
-    name: 'Business',
-  },
-  {
-    name: 'Learning',
-  },
-  {
-    name: 'News',
-  },
-  {
-    name: 'Others',
+    event_name: 'Inter-School Debate Competition',
+    date: '2023-07-10',
+    startsAt: '10:00:00',
+    endsAt: '14:00:00',
+    venue: 'School Auditorium',
+    description:
+      'Students participate in a debating competition with other schools.',
   },
 ]
 
-const ReportData = [
+const MarksData = [
   {
-    name: 'Sexual content',
+    date: '2023-02-10',
+    subject: '61a12a34b567890cde123456',
+    marks_records: [
+      {
+        student: '12a34b567890cde123456789',
+        marks_obtained: 80,
+      },
+      {
+        student: '23b45c678901def234567890',
+        marks_obtained: 90,
+      },
+      {
+        student: '34c56d78901efa3456789012',
+        marks_obtained: 75,
+      },
+    ],
   },
   {
-    name: 'Violent or repulsive content',
+    date: '2023-02-11',
+    subject: '12a34b567890cde123456789',
+    marks_records: [
+      {
+        student: '23b45c678901def234567890',
+        marks_obtained: 65,
+      },
+      {
+        student: '34c56d78901efa3456789012',
+        marks_obtained: 70,
+      },
+      {
+        student: '45d67e8901fab45678901234',
+        marks_obtained: 85,
+      },
+    ],
   },
   {
-    name: 'Harassment or bullying',
+    date: '2023-02-12',
+    subject: '23b45c678901def234567890',
+    marks_records: [
+      {
+        student: '34c56d78901efa3456789012',
+        marks_obtained: 92,
+      },
+      {
+        student: '45d67e8901fab45678901234',
+        marks_obtained: 88,
+      },
+      {
+        student: '56e78f9012abc56789012345',
+        marks_obtained: 78,
+      },
+    ],
   },
   {
-    name: 'Harmfull or dangerous acts',
+    date: '2023-02-13',
+    subject: '34c56d78901efa3456789012',
+    marks_records: [
+      {
+        student: '45d67e8901fab45678901234',
+        marks_obtained: 65,
+      },
+      {
+        student: '56e78f9012abc56789012345',
+        marks_obtained: 75,
+      },
+      {
+        student: '67f89a012bcd67890123456',
+        marks_obtained: 85,
+      },
+    ],
   },
   {
-    name: 'Child abuse',
-  },
-  {
-    name: 'Infringes my rights',
-  },
-  {
-    name: 'Promotes terrorism',
-  },
-  {
-    name: 'Spam or misleading',
+    date: '2023-02-14',
+    subject: '45d67e8901fab45678901234',
+    marks_records: [
+      {
+        student: '56e78f9012abc56789012345',
+        marks_obtained: 82,
+      },
+      {
+        student: '67f89a012bcd67890123456',
+        marks_obtained: 90,
+      },
+      {
+        student: '78a01b234c56789012345678',
+        marks_obtained: 72,
+      },
+    ],
   },
 ]
 
-const CommentsData = [
-  { message: 'Stay positive, things will get better.' },
-  { message: 'Always remember to believe in yourself.' },
-  { message: 'Life is too short to waste time on negativity.' },
-  { message: 'Focus on the good and ignore the rest.' },
-  { message: 'Chase your dreams, they will come true.' },
-  { message: 'Keep pushing forward, you got this.' },
-  { message: 'Be the change you wish to see in the world.' },
-  { message: 'Stay true to yourself and never give up.' },
-  { message: 'Happiness is a choice, choose it every day.' },
-  { message: "Don't let fear hold you back, take a chance." },
-  { message: 'Success is not final, failure is not fatal.' },
-  { message: 'Life is a journey, enjoy the ride.' },
-  { message: 'Gratitude is the key to a happier life.' },
-  { message: 'Every day is a new opportunity to grow.' },
-  { message: 'Be kind, for everyone you meet is fighting a battle.' },
-  { message: 'Believe in yourself and all that you are.' },
-  { message: 'Let your light shine, inspire others.' },
-  { message: 'Do what makes you happy, life is too short.' },
-  { message: 'The power of positive thinking is amazing.' },
-  { message: 'Be the reason someone smiles today.' },
-  { message: 'Your attitude determines your altitude.' },
-  { message: 'Life is too precious, cherish every moment.' },
-  { message: 'Take time to appreciate the little things.' },
-  { message: 'Never give up on something you truly want.' },
-  { message: 'The best things in life are the people we love.' },
-  { message: "Smile, it's the universal language of kindness." },
-  { message: 'Be the change you want to see in the world.' },
-  { message: 'The greatest gift you can give is love and kindness.' },
-  { message: 'Be yourself, everyone else is already taken.' },
-  { message: 'Never let yesterday take up too much of today.' },
-  { message: 'Every day is a new beginning, make it count.' },
-]
-
-const AvailabilityConfig = [
-  { type: 1, title: 'offline' },
-  { type: 2, title: 'online' },
-  { type: 3, title: 'live' },
-]
-
-const NotificationConfig = [
-  { type: 1, title: 'tweet' },
-  { type: 2, title: 'video' },
-  { type: 3, title: 'live' },
-]
-
-const ReactionsData = [
-  { type: 1, title: 'smile', schema: 'reactionSmileCount' },
-  { type: 2, title: 'love', schema: 'reactionloveCount' },
-  { type: 3, title: 'haha', schema: 'reactionHahaCount' },
-  { type: 4, title: 'insightful', schema: 'reactionInsightfulCount' },
-  { type: 5, title: 'angry', schema: 'reactionAngryCount' },
+const FeesData = [
+  {
+    student: '60dbf9d57f750bb9ac8c6b91',
+    date: '2023-02-12T00:00:00.000Z',
+    amount_paid: 1500,
+    payment_mode: 'Cash',
+  },
+  {
+    student: '60dbf9d57f750bb9ac8c6b92',
+    date: '2023-02-10T00:00:00.000Z',
+    amount_paid: 2000,
+    payment_mode: 'Online',
+  },
+  {
+    student: '60dbf9d57f750bb9ac8c6b93',
+    date: '2023-02-08T00:00:00.000Z',
+    amount_paid: 1000,
+    payment_mode: 'Cash',
+  },
+  {
+    student: '60dbf9d57f750bb9ac8c6b94',
+    date: '2023-02-06T00:00:00.000Z',
+    amount_paid: 500,
+    payment_mode: 'Online',
+  },
+  {
+    student: '60dbf9d57f750bb9ac8c6b95',
+    date: '2023-02-04T00:00:00.000Z',
+    amount_paid: 2500,
+    payment_mode: 'Cash',
+  },
+  {
+    student: '60dbf9d57f750bb9ac8c6b96',
+    date: '2023-02-02T00:00:00.000Z',
+    amount_paid: 3000,
+    payment_mode: 'Online',
+  },
+  {
+    student: '60dbf9d57f750bb9ac8c6b97',
+    date: '2023-01-31T00:00:00.000Z',
+    amount_paid: 1500,
+    payment_mode: 'Cash',
+  },
+  {
+    student: '60dbf9d57f750bb9ac8c6b98',
+    date: '2023-01-29T00:00:00.000Z',
+    amount_paid: 1000,
+    payment_mode: 'Online',
+  },
+  {
+    student: '60dbf9d57f750bb9ac8c6b99',
+    date: '2023-01-27T00:00:00.000Z',
+    amount_paid: 500,
+    payment_mode: 'Cash',
+  },
+  {
+    student: '60dbf9d57f750bb9ac8c6b9a',
+    date: '2023-01-25T00:00:00.000Z',
+    amount_paid: 2000,
+    payment_mode: 'Online',
+  },
 ]
 
 module.exports = {
   globalData,
-  TweetsData,
-  VideosData,
   UsersData,
-  AvailabilityConfig,
-  ReactionsData,
-  NotificationConfig,
-  CategoryData,
-  ReportData,
-  CommentsData,
+  TeachersData,
+  StudentData,
+  ParentData,
+  SubjectData,
+  ClassData,
+  AttendanceData,
+  EventData,
+  FeesData,
+  MarksData,
+  NotificationData,
 }

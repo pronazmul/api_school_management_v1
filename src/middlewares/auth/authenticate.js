@@ -1,11 +1,10 @@
 // External Modules:
 const createError = require('http-errors')
-const Creator = require('../../models/Creator')
 const People = require('../../models/people')
 const {
   peopleProjection,
   creatorProjection,
-} = require('../../models/Projection.Schema')
+} = require('../../models/Projections_Schema')
 const Session = require('../../models/session')
 const { decode } = require('../../utils/jwt')
 
@@ -60,14 +59,9 @@ const authenticate = async (req, res, next) => {
       }
 
       const user = await People.findById(session?.user, peopleProjection)
-      const creator = await Creator.findOne(
-        { user: session?.user },
-        creatorProjection
-      )
 
       let access = user.generateJwtToken({
         user: user,
-        creator: creator,
         session: validSession,
       })
 
@@ -85,7 +79,6 @@ const authenticate = async (req, res, next) => {
       })
       req.session = validSession
       req.user = user
-      req.creator = creator
       return next()
     }
     if (!accessToken && !refreshToken) {

@@ -8,7 +8,7 @@ const TeacherSchema = mongoose.Schema(
     mobile: { type: String, unique: true },
     email: { type: String, unique: true },
     password: { type: String, required: true },
-    dob: Number,
+    dob: Date,
     department: String,
     qualifications: [String],
     avatar: {

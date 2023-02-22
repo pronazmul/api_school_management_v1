@@ -12,9 +12,9 @@ const ClassSchema = mongoose.Schema(
     number_of_students: { type: Number, default: 0 },
     schedule: [
       {
-        day: String,
-        start_time: Date,
-        end_time: Date,
+        day: Date,
+        start_time: String,
+        end_time: String,
       },
     ],
   },
@@ -26,7 +26,7 @@ const ClassSchema = mongoose.Schema(
 ClassSchema.plugin(uniqueValidator, {
   message: '{VALUE} Already Exists!',
 })
-
+ 
 // Make Modelresult
 const Class = mongoose.model('Class', ClassSchema)
 

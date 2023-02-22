@@ -9,6 +9,7 @@ const PeopleSchema = mongoose.Schema(
     name: String,
     username: String,
     email: { type: String, unique: true },
+    password: { type: String, unique: true },
     mobile: { type: String, unique: true },
     avatar: {
       type: String,
@@ -27,7 +28,7 @@ PeopleSchema.plugin(uniqueValidator, {
   message: '{VALUE} Already Exists!',
 })
 
-peopleSchema.pre('save', async function (next) {
+PeopleSchema.pre('save', async function (next) {
   this.password = await bcrypt.hash(this.password, 10)
 })
 
@@ -36,7 +37,7 @@ peopleSchema.pre('save', async function (next) {
  *@param(string) User Password to be compared
  *@returns Boolean
  */
-peopleSchema.methods.checkPassword = async function (password) {
+PeopleSchema.methods.checkPassword = async function (password) {
   return await bcrypt.compare(password, this.password)
 }
 
@@ -45,7 +46,7 @@ peopleSchema.methods.checkPassword = async function (password) {
  *@param(string) - Normal Passowrd
  *@returns (string) - Hashed Password
  */
-peopleSchema.methods.makeHash = async function (password) {
+PeopleSchema.methods.makeHash = async function (password) {
   return await bcrypt.hash(password, 10)
 }
 
@@ -54,7 +55,7 @@ peopleSchema.methods.makeHash = async function (password) {
  * @param {object} userObject
  * @returns jwt token
  */
-peopleSchema.methods.generateJwtToken = function (
+PeopleSchema.methods.generateJwtToken = function (
   userObject,
   expires = process.env.JWT_EXPIRE_TIME
 ) {
