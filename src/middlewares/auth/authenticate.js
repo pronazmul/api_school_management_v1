@@ -1,11 +1,8 @@
 // External Modules:
 const createError = require('http-errors')
-const People = require('../../models/people')
-const {
-  peopleProjection,
-  creatorProjection,
-} = require('../../models/Projections_Schema')
-const Session = require('../../models/session')
+const People = require('../../models/People')
+const { peopleProjection } = require('../../models/Projections_Schema')
+const Session = require('../../models/Session')
 const { decode } = require('../../utils/jwt')
 
 /**
@@ -23,11 +20,10 @@ const authenticate = async (req, res, next) => {
 
     if (accessToken) {
       const {
-        decoded: { user, session, creator },
+        decoded: { user, session },
       } = decode(accessToken)
       req.user = user
       req.session = session
-      req.creator = creator
       return next()
     }
 

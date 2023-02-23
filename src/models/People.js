@@ -9,7 +9,7 @@ const PeopleSchema = mongoose.Schema(
     name: String,
     username: String,
     email: { type: String, unique: true },
-    password: { type: String, unique: true },
+    password: { type: String, required: true },
     mobile: { type: String, unique: true },
     avatar: {
       type: String,

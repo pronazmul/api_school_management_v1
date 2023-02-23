@@ -2,11 +2,8 @@
 const createError = require('http-errors')
 
 // Internal Modules:
-const People = require('../models/people')
-const {
-  peopleProjection,
-  creatorProjection,
-} = require('../models/Projections_Schema')
+const People = require('../models/People')
+const { peopleProjection } = require('../models/Projections_Schema')
 const { unlinkSingleImage } = require('../utils/files')
 
 /**

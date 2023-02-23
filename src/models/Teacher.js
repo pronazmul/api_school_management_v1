@@ -24,7 +24,6 @@ const TeacherSchema = mongoose.Schema(
   },
   { timestamps: true, versionKey: false }
 )
-//
 
 // Integrate MOngoose Unique Validoator Plugin
 TeacherSchema.plugin(uniqueValidator, {

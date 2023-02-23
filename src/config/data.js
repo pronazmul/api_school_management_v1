@@ -45,7 +45,6 @@ const globalData = {
   ],
 }
 
-// Teachers Data:
 const TeachersData = [
   {
     teacher_name: 'John Smith',
@@ -260,7 +259,7 @@ const StudentData = [
     email: 'jsmith@example.com',
     password: 'Password@1234',
     dob: '2005-06-12',
-    gender: 'Male',
+    gender: 'male',
     blood_group: 'A+',
     address: {
       street: '987 Maple St.',
@@ -276,7 +275,7 @@ const StudentData = [
     email: 'jdoe@example.com',
     password: 'Password@1234',
     dob: '2005-07-15',
-    gender: 'Female',
+    gender: 'female',
     blood_group: 'B+',
     address: {
       street: '987 Maple St.',
@@ -292,7 +291,7 @@ const StudentData = [
     email: 'bjohnson@example.com',
     password: 'Password@1234',
     dob: '2006-02-10',
-    gender: 'Male',
+    gender: 'male',
     blood_group: 'AB+',
     address: {
       street: '987 Maple St.',
@@ -308,7 +307,7 @@ const StudentData = [
     email: 'asmith@example.com',
     password: 'Password@1234',
     dob: '2004-12-20',
-    gender: 'Female',
+    gender: 'female',
     blood_group: 'O+',
     address: {
       street: '987 Maple St.',
@@ -324,7 +323,7 @@ const StudentData = [
     email: 'djones@example.com',
     password: 'Password@1234',
     dob: '2005-10-30',
-    gender: 'Male',
+    gender: 'male',
     blood_group: 'A-',
     address: {
       street: '987 Maple St.',
@@ -340,7 +339,7 @@ const StudentData = [
     email: 'edavis@example.com',
     password: 'Password@1234',
     dob: '2006-03-25',
-    gender: 'Female',
+    gender: 'female',
     blood_group: 'B-',
     address: {
       street: '987 Maple St.',
@@ -356,7 +355,7 @@ const StudentData = [
     email: 'arodriguez@example.com',
     password: 'Password@1234',
     dob: '2004-11-05',
-    gender: 'Male',
+    gender: 'male',
     blood_group: 'AB-',
     address: {
       street: '987 Maple St.',
@@ -372,7 +371,7 @@ const StudentData = [
     email: 'slee@example.com',
     password: 'Password@1234',
     dob: '2005-09-15',
-    gender: 'Female',
+    gender: 'female',
     blood_group: 'O-',
     address: {
       street: '987 Maple St.',
@@ -388,13 +387,29 @@ const StudentData = [
     email: 'gwilson@example.com',
     password: 'Password@1234',
     dob: '2006-01-01',
-    gender: 'Male',
+    gender: 'male',
     blood_group: 'A+',
     address: {
       street: '987 Maple St.',
       city: 'Seattle',
       state: 'WA',
       zipcode: '98101',
+    },
+  },
+  {
+    student_name: 'Thiago Silva',
+    roll_number: '20230010',
+    mobile: '555-555-5564',
+    email: 'thiago@example.com',
+    password: 'Password@1234',
+    dob: '2004-01-08',
+    gender: 'male',
+    blood_group: 'A-',
+    address: {
+      street: 'Agargaon',
+      city: 'Dhaka',
+      state: 'Dhaka',
+      zipcode: '98109',
     },
   },
 ]
@@ -406,6 +421,7 @@ const ParentData = [
     email: 'jsmithsr@example.com',
     password: 'Password@1234',
     relation: 'Father',
+    children: [],
   },
   {
     parent_name: 'Jane Doe Sr.',
@@ -413,6 +429,7 @@ const ParentData = [
     email: 'jdoesr@example.com',
     password: 'Password@1234',
     relation: 'Mother',
+    children: [],
   },
   {
     parent_name: 'Alex Johnson',
@@ -420,6 +437,7 @@ const ParentData = [
     email: 'ajohnson@example.com',
     password: 'Password@1234',
     relation: 'Guardian',
+    children: [],
   },
   {
     parent_name: 'Maria Garcia',
@@ -427,6 +445,7 @@ const ParentData = [
     email: 'mgarcia@example.com',
     password: 'Password@1234',
     relation: 'Mother',
+    children: [],
   },
   {
     parent_name: 'David Lee',
@@ -434,41 +453,7 @@ const ParentData = [
     email: 'dlee@example.com',
     password: 'Password@1234',
     relation: 'Father',
-  },
-  {
-    parent_name: 'Sophia Chen',
-    mobile: '555-555-5560',
-    email: 'schen@example.com',
-    password: 'Password@1234',
-    relation: 'Guardian',
-  },
-  {
-    parent_name: 'William Davis',
-    mobile: '555-555-5561',
-    email: 'wdavis@example.com',
-    password: 'Password@1234',
-    relation: 'Father',
-  },
-  {
-    parent_name: 'Emily Brown',
-    mobile: '555-555-5562',
-    email: 'ebrown@example.com',
-    password: 'Password@1234',
-    relation: 'Mother',
-  },
-  {
-    parent_name: 'Daniel Kim',
-    mobile: '555-555-5563',
-    email: 'dkim@example.com',
-    password: 'Password@1234',
-    relation: 'Father',
-  },
-  {
-    parent_name: 'Isabella Martinez',
-    mobile: '555-555-5564',
-    email: 'imartinez@example.com',
-    password: 'Password@1234',
-    relation: 'Mother',
+    children: [],
   },
 ]
 
@@ -799,6 +784,49 @@ const EventData = [
   },
 ]
 
+const NotificationData = [
+  {
+    title: 'Website maintenance',
+    message: 'Our website will be down for maintenance tomorrow',
+    date: '2022-03-16T02:00:00.000Z',
+  },
+  {
+    title: 'New order',
+    message: 'You have a new order from John',
+    date: '2022-03-14T18:15:00.000Z',
+  },
+  {
+    title: 'Meeting reminder',
+    message: 'Your meeting with Jane is in 30 minutes',
+    date: '2022-03-15T11:30:00.000Z',
+  },
+  {
+    title: 'Product update',
+    message: "We've released a new version of our app",
+    date: '2022-03-13T16:30:00.000Z',
+  },
+  {
+    title: 'New follower',
+    message: 'You have a new follower on Twitter',
+    date: '2022-03-14T09:15:00.000Z',
+  },
+  {
+    title: 'Payment received',
+    message: 'Your payment of $50.00 has been received',
+    date: '2022-03-15T11:45:00.000Z',
+  },
+  {
+    title: 'Reminder',
+    message: 'Your appointment is tomorrow at 2:00 PM',
+    date: '2022-03-16T14:00:00.000Z',
+  },
+  {
+    title: 'New message',
+    message: 'You have a new message from John',
+    date: '2022-03-15T10:30:00.000Z',
+  },
+]
+
 const MarksData = [
   {
     date: '2023-02-10',
@@ -897,61 +925,61 @@ const FeesData = [
     student: '60dbf9d57f750bb9ac8c6b91',
     date: '2023-02-12T00:00:00.000Z',
     amount_paid: 1500,
-    payment_mode: 'Cash',
+    payment_mode: 'cash',
   },
   {
     student: '60dbf9d57f750bb9ac8c6b92',
     date: '2023-02-10T00:00:00.000Z',
     amount_paid: 2000,
-    payment_mode: 'Online',
+    payment_mode: 'online',
   },
   {
     student: '60dbf9d57f750bb9ac8c6b93',
     date: '2023-02-08T00:00:00.000Z',
     amount_paid: 1000,
-    payment_mode: 'Cash',
+    payment_mode: 'cash',
   },
   {
     student: '60dbf9d57f750bb9ac8c6b94',
     date: '2023-02-06T00:00:00.000Z',
     amount_paid: 500,
-    payment_mode: 'Online',
+    payment_mode: 'online',
   },
   {
     student: '60dbf9d57f750bb9ac8c6b95',
     date: '2023-02-04T00:00:00.000Z',
     amount_paid: 2500,
-    payment_mode: 'Cash',
+    payment_mode: 'cash',
   },
   {
     student: '60dbf9d57f750bb9ac8c6b96',
     date: '2023-02-02T00:00:00.000Z',
     amount_paid: 3000,
-    payment_mode: 'Online',
+    payment_mode: 'online',
   },
   {
     student: '60dbf9d57f750bb9ac8c6b97',
     date: '2023-01-31T00:00:00.000Z',
     amount_paid: 1500,
-    payment_mode: 'Cash',
+    payment_mode: 'cash',
   },
   {
     student: '60dbf9d57f750bb9ac8c6b98',
     date: '2023-01-29T00:00:00.000Z',
     amount_paid: 1000,
-    payment_mode: 'Online',
+    payment_mode: 'online',
   },
   {
     student: '60dbf9d57f750bb9ac8c6b99',
     date: '2023-01-27T00:00:00.000Z',
     amount_paid: 500,
-    payment_mode: 'Cash',
+    payment_mode: 'cash',
   },
   {
     student: '60dbf9d57f750bb9ac8c6b9a',
     date: '2023-01-25T00:00:00.000Z',
     amount_paid: 2000,
-    payment_mode: 'Online',
+    payment_mode: 'online',
   },
 ]
 

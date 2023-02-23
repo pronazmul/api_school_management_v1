@@ -2,7 +2,7 @@
 const createError = require('http-errors')
 
 //Internal Module:
-const Attendance = require('../models/Attendances')
+const Attendance = require('../models/Attendance')
 const { attendanceProjection } = require('../models/Projections_Schema')
 const { regxSearchQuery } = require('../utils/mongoose')
 const { filterObjectByValues } = require('../utils/object')

@@ -26,7 +26,7 @@ const ClassSchema = mongoose.Schema(
 ClassSchema.plugin(uniqueValidator, {
   message: '{VALUE} Already Exists!',
 })
- 
+
 // Make Modelresult
 const Class = mongoose.model('Class', ClassSchema)
 
