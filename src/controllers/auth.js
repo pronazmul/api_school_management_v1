@@ -9,49 +9,8 @@ const { peopleProjection } = require('../models/Projections_Schema')
 const { filterObjectByValues } = require('../utils/object')
 
 /**
- * @description Check user using email||mobile and password
- * @Route [POST]- /api/auth/login
- * @Access Public
- * @returns {Object} - Logged in User.
- */
-const login = async (req, res, next) => {
-  let { email, password } = req.body
-  let query = { email }
-  try {
-    let user = await People.findOne(query, peopleProjection)
-    let isPasswordMatch = await user.checkPassword(password)
-    if (user && isPasswordMatch) {
-      let session = await Session.create({
-        user: user?._id,
-        userAgent: detectDevice(req.headers['user-agent']),
-      })
-
-      let accessToken = user.generateJwtToken({ user, session })
-
-      let refreshToken = user.generateJwtToken(
-        { session },
-        process.env.REFRESH_TOKEN
-      )
-      res.cookie('accessToken', accessToken, {
-        maxAge: process.env.ACCESS_TOKEN,
-        httpOnly: true,
-      })
-      res.cookie('refreshToken', refreshToken, {
-        maxAge: process.env.REFRESH_TOKEN,
-        httpOnly: true,
-      })
-      return res.status(200).json({ user, session: session?._id })
-    } else {
-      return next(createError(401, 'Authentication Failed!'))
-    }
-  } catch (error) {
-    next(createError(500, error))
-  }
-}
-
-/**
- * @description Register New User With Credentials
- * @Route [POST]- /api/auth
+ * @description Register New User
+ * @Route [POST]- /api/auth/register
  * @Access Public
  * @returns {Object} - Created User.
  */
@@ -93,12 +52,56 @@ const register = async (req, res, next) => {
       session: session?._id,
     })
   } catch (error) {
-    if (error?._message) {
-      let message = error?.message?.split(':').pop()
-      next(createError(422, message))
+    next(createError(500, error))
+  }
+}
+
+/**
+ * @description Login with usernaem|mobile passwrod
+ * @Route [POST]- /api/auth/login
+ * @Access Public
+ * @returns {Object} - Logged in User.
+ */
+const login = async (req, res, next) => {
+  let { username, password } = req.body
+  let query = { $or: [{ email: username }, { mobile: username }] }
+  try {
+    let user = await People.findOne(query)
+    console.log({ user })
+    if (!user) return next(createError(401, 'Authentication Failed!'))
+
+    let isPasswordMatch = await user.checkPassword(password)
+    if (user && isPasswordMatch) {
+      let session = await Session.create({
+        user: user?._id,
+        userAgent: detectDevice(req.headers['user-agent']),
+      })
+
+      let filteredUser = filterObjectByValues(
+        user._doc,
+        peopleProjection.split(' ')
+      )
+
+      let accessToken = user.generateJwtToken({ user: filteredUser, session })
+
+      let refreshToken = user.generateJwtToken(
+        { session },
+        process.env.REFRESH_TOKEN
+      )
+      res.cookie('accessToken', accessToken, {
+        maxAge: process.env.ACCESS_TOKEN,
+        httpOnly: true,
+      })
+      res.cookie('refreshToken', refreshToken, {
+        maxAge: process.env.REFRESH_TOKEN,
+        httpOnly: true,
+      })
+      return res.status(200).json({ user: filteredUser, session: session?._id })
     } else {
-      next(createError(500, error))
+      return next(createError(401, 'Authentication Failed!'))
     }
+  } catch (error) {
+    next(createError(500, error))
   }
 }
 

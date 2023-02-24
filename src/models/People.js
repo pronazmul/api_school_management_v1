@@ -4,10 +4,9 @@ let uniqueValidator = require('mongoose-unique-validator')
 let jwt = require('jsonwebtoken')
 let bcrypt = require('bcrypt')
 
-const PeopleSchema = mongoose.Schema(
+const schema = mongoose.Schema(
   {
     name: String,
-    username: String,
     email: { type: String, unique: true },
     password: { type: String, required: true },
     mobile: { type: String, unique: true },
@@ -15,7 +14,6 @@ const PeopleSchema = mongoose.Schema(
       type: String,
       default: `${process.env.APP_URL}/default/avatar.jpg`,
     },
-    about: String,
     dob: Date,
     gender: { type: String, enum: ['male', 'female', 'others'] },
   },
@@ -24,12 +22,19 @@ const PeopleSchema = mongoose.Schema(
 //
 
 // Integrate MOngoose Unique Validoator Plugin
-PeopleSchema.plugin(uniqueValidator, {
+schema.plugin(uniqueValidator, {
   message: '{VALUE} Already Exists!',
 })
 
-PeopleSchema.pre('save', async function (next) {
-  this.password = await bcrypt.hash(this.password, 10)
+// add a pre-save middleware function to hash the password
+schema.pre('save', async function (next) {
+  const user = this
+  if (!user.isModified('password')) {
+    return next()
+  }
+  const hash = await bcrypt.hash(user.password, 10)
+  user.password = hash
+  next()
 })
 
 /**
@@ -37,7 +42,7 @@ PeopleSchema.pre('save', async function (next) {
  *@param(string) User Password to be compared
  *@returns Boolean
  */
-PeopleSchema.methods.checkPassword = async function (password) {
+schema.methods.checkPassword = async function (password) {
   return await bcrypt.compare(password, this.password)
 }
 
@@ -46,7 +51,7 @@ PeopleSchema.methods.checkPassword = async function (password) {
  *@param(string) - Normal Passowrd
  *@returns (string) - Hashed Password
  */
-PeopleSchema.methods.makeHash = async function (password) {
+schema.methods.makeHash = async function (password) {
   return await bcrypt.hash(password, 10)
 }
 
@@ -55,7 +60,7 @@ PeopleSchema.methods.makeHash = async function (password) {
  * @param {object} userObject
  * @returns jwt token
  */
-PeopleSchema.methods.generateJwtToken = function (
+schema.methods.generateJwtToken = function (
   userObject,
   expires = process.env.JWT_EXPIRE_TIME
 ) {
@@ -65,7 +70,7 @@ PeopleSchema.methods.generateJwtToken = function (
 }
 
 // Make User Modelresult
-const People = mongoose.model('People', PeopleSchema)
+const People = mongoose.model('People', schema)
 
 // Export User Model
 module.exports = People

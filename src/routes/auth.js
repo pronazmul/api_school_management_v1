@@ -21,7 +21,8 @@ router.put('/sessions/:sessionId', deactiveSession)
 router.get('/sessions/:userId', authenticate, activeSessions)
 router.get('/profile', authenticate, profile)
 router.get('/logout', authenticate, logout)
-router.post('/', login, register)
+router.post('/login', login)
+router.post('/register', register)
 
 // Exports
 module.exports = router

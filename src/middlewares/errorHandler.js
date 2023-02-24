@@ -15,10 +15,18 @@ const notFoundHandler = (req, res, next) => {
  *Description: Application Last Middleware take 4 parameters.This middleware is used to handle errors. Send a custom error message to Client Interface.
  */
 const errorHandler = (error, req, res, next) => {
+  // Split MongoDB Data Validation Message
+  let message = error?._message
+    ? error?.message?.split(':').pop()
+    : error.message
+
   const errorMessage =
     process.env.NODE_ENV === 'production'
-      ? { message: error.message }
-      : { message: error.message, stack: error.stack }
+      ? { message }
+      : { message, stack: error.stack }
+
+  //CHECK MONGODB DATA-VALIDATION ERROR OR NOT:
+  if (error?._message) return res.status(422).json(errorMessage)
 
   res.status(error.status || 500).json(errorMessage)
 }

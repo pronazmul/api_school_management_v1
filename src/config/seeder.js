@@ -1,4 +1,5 @@
 const colors = require('colors')
+let bcrypt = require('bcrypt')
 const { mongooseConnection } = require('./db')
 const {
   UsersData,
@@ -60,19 +61,41 @@ const importData = async () => {
     emptyDirectory('parents')
 
     //IMPORT USERS
-    const usersArray = await UserModel.insertMany(UsersData)
+
+    const hashedUser = await Promise.all(
+      UsersData.map(async (doc) => {
+        return { ...doc, password: await bcrypt.hash(doc.password, 10) }
+      })
+    )
+    const usersArray = await UserModel.insertMany(hashedUser)
     const usersIds = usersArray.map((data) => data._id)
 
     //IMPORT TEACHERS
-    const teacherArray = await TeacherModel.insertMany(TeachersData)
+    const hashedTeacher = await Promise.all(
+      TeachersData.map(async (doc) => {
+        return { ...doc, password: await bcrypt.hash(doc.password, 10) }
+      })
+    )
+    const teacherArray = await TeacherModel.insertMany(hashedTeacher)
     const teacherIds = teacherArray.map((data) => data._id)
 
     //IMPORT STUDENTS
-    const studentArray = await StudentModel.insertMany(StudentData)
+
+    const hashedStudents = await Promise.all(
+      StudentData.map(async (doc) => {
+        return { ...doc, password: await bcrypt.hash(doc.password, 10) }
+      })
+    )
+    const studentArray = await StudentModel.insertMany(hashedStudents)
     const studentIds = studentArray.map((data) => data._id)
 
     //IMPORT PARENTS
-    const prepareParents = ParentData.map((item) => {
+    const hashedParents = await Promise.all(
+      ParentData.map(async (doc) => {
+        return { ...doc, password: await bcrypt.hash(doc.password, 10) }
+      })
+    )
+    const prepareParents = hashedParents.map((item) => {
       let children = studentIds.splice(0, 2)
       return {
         ...item,
@@ -112,7 +135,6 @@ const importData = async () => {
         student,
       }
     })
-    console.log({ prepareFees, studentIds })
     const feesArray = await FeesModel.insertMany(prepareFees)
     const feesIds = feesArray.map((data) => data._id)
 

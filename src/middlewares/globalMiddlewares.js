@@ -5,6 +5,15 @@ const path = require('path')
 const morgan = require('morgan')
 const cors = require('cors')
 
+// Customise Morgan:
+morgan.token('timestamp', () => {
+  let day = new Date().toDateString()
+  let timestamp = new Date().toLocaleTimeString()
+  return `${day}- ${timestamp}`
+})
+const logFormat =
+  ':timestamp :method :url :status :res[content-length] - :response-time ms'
+
 /**
  * @Desc: Global Middlewares
  * @middleware : Rate Limitation Middleware
@@ -13,7 +22,8 @@ const cors = require('cors')
  * @middleware : cookieParser Middleware
  */
 const globalMiddlewares = [
-  morgan('dev'),
+  morgan(logFormat),
+  // morgan('dev'),
   cors({ origin: 'http://localhost:3000', credentials: true }),
   // cors(),
   cookieParser(),
