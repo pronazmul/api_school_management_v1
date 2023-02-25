@@ -5,20 +5,21 @@ const createError = require('http-errors')
 const People = require('../models/People')
 const { peopleProjection } = require('../models/Projections_Schema')
 const { unlinkSingleImage } = require('../utils/files')
+const { regxSearchQuery } = require('../utils/mongoose')
 
 /**
  * @description Get Single Data
- * @Route [GET]- /api/users/:userID
+ * @Route [GET]- /api/users/:id
  * @Access protected - [admin]
  * @returns {Object} - Single User Object
  */
 const findOneById = async (req, res, next) => {
   try {
-    // Retrive User By Id
     let query = { _id: req.params.id }
     let user = await People.findOne(query, peopleProjection)
+    if (user) return res.status(200).json(user)
 
-    res.status(200).json({ user })
+    return next(createError(404, 'User Not Found!'))
   } catch (error) {
     next(createError(500, error))
   }
@@ -38,7 +39,7 @@ const findAll = async (req, res, next) => {
       limit = process.env.DEFAULT_DATA_LIMIT,
     } = req.query
 
-    const query = search ? regxSearchQuery(search, ['description', 'tags']) : {}
+    const query = search ? regxSearchQuery(search, ['name', 'email']) : {}
     const options = { sort: { createdAt: 1 } }
 
     let totalCount = await People.countDocuments(query)
@@ -60,7 +61,7 @@ const findAll = async (req, res, next) => {
 
 /**
  * @description Update Data
- * @Route [PUT]- /api/users/:userID
+ * @Route [PUT]- /api/users/:id
  * @Access protected - [user, admin]
  * @returns {Object} - Updated User.
  */
@@ -74,38 +75,16 @@ const updateOneById = async (req, res, next) => {
     if (req.params.id === req.user._id) {
       const accessToken = user.generateJwtToken({
         user,
-        creator: req.creator,
         session: req.session,
       })
       res.cookie('accessToken', accessToken, {
         maxAge: process.env.ACCESS_TOKEN,
         httpOnly: true,
       })
-      return res.status(200).json({ user, creator, session: req.session?._id })
+      return res.status(200).json({ user, session: req.session?._id })
     } else {
       return res.status(200).json(user)
     }
-  } catch (error) {
-    if (error?._message) {
-      let message = error?.message?.split(':').pop()
-      next(createError(422, message))
-    } else {
-      next(createError(500, error))
-    }
-  }
-}
-
-/**
- * @description Delete Data
- * @Route [DELETE]- /api/users/:userID
- * @Access protected - [admin]
- * @returns {Object} - Deleted Status.
- */
-const deleteOneById = async (req, res, next) => {
-  try {
-    let query = { _id: req.params.id }
-    await People.deleteOne(query)
-    res.status(200).json({ deletedCount: 1 })
   } catch (error) {
     next(createError(500, error))
   }
@@ -143,17 +122,35 @@ const avatarUpload = async (req, res, next) => {
     if (req.params.id === req.user._id) {
       const accessToken = user.generateJwtToken({
         user,
-        creator: req.creator,
         session: req.session,
       })
       res.cookie('accessToken', accessToken, {
         maxAge: process.env.ACCESS_TOKEN,
         httpOnly: true,
       })
-      return res.status(200).json({ user, creator, session: req.session?._id })
+      return res.status(200).json({ user, session: req.session?._id })
     } else {
       return res.status(200).json({ user })
     }
+  } catch (error) {
+    next(createError(500, error))
+  }
+}
+
+/**
+ * @description Delete Data
+ * @Route [DELETE]- /api/users/:userID
+ * @Access protected - [admin]
+ * @returns {Object} - Deleted Status.
+ */
+const deleteOneById = async (req, res, next) => {
+  try {
+    let query = { _id: req.params.id }
+    let result = await People.findByIdAndDelete(query)
+    if (result?.avatar.includes(process.env.APP_IMAGE_PATH))
+      unlinkSingleImage(result.avatar)
+
+    res.status(200).json({ message: 'Entry Deleted' })
   } catch (error) {
     next(createError(500, error))
   }

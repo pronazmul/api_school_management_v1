@@ -1,5 +1,8 @@
 const peopleProjection = '_id name email mobile avatar dob gender createdAt'
 
+const teacherProjection =
+  '_id teacher_name mobile email dob department qualifications avatar address createdAt'
+
 const attendanceProjection = '_id '
 
 const classProjection = '_id'
@@ -17,8 +20,6 @@ const parentProjection = '_id'
 const studentProjection = '_id'
 
 const subjectProjection = '_id'
-
-const teacherProjection = '_id'
 
 module.exports = {
   peopleProjection,

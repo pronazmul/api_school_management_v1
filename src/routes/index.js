@@ -26,6 +26,9 @@ router.use('/public', publicRoutes)
 // Application Routes
 router.use('/api/v1/auth', authRoutes)
 router.use('/api/v1/users', authenticate, userRoutes)
+
+router.use('/api/v1/teachers', teacherRoutes)
+
 router.use('/api/v1/attendances', attendanceRoutes)
 router.use('/api/v1/classes', classRoutes)
 router.use('/api/v1/subjects', subjectRoutes)
@@ -37,7 +40,6 @@ router.use('/api/v1/marks', markRoutes)
 router.use('/api/v1/notifications', notificationRoutes)
 router.use('/api/v1/parents', parentRoutes)
 router.use('/api/v1/students', studentRoutes)
-router.use('/api/v1/teachers', teacherRoutes)
 
 // Module Exports
 module.exports = router

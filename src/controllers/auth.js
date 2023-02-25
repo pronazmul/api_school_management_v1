@@ -174,12 +174,6 @@ const logout = async (req, res, next) => {
     }
 
     await Session.updateOne(query, update)
-    await Creator.updateOne(
-      { user: req.user._id },
-      { availability: 0 },
-      { new: true }
-    )
-
     res.cookie('accessToken', '', {
       maxAge: 0,
       httpOnly: true,
