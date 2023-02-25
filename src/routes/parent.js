@@ -7,6 +7,7 @@ const {
   findOneById,
   findAll,
   deleteOneById,
+  avatarUpload,
   updateOneById,
 } = require('../controllers/parent')
 
@@ -17,6 +18,13 @@ const { singleConvertToWebp } = require('../middlewares/upload/imageConverter')
 const { singleUploader } = require('../middlewares/upload/imageUploader')
 
 //Routes:
+router.post(
+  '/:id/upload',
+  singleUploader('avatar', 'parents'),
+  singleConvertToWebp('parents'),
+  avatarUpload
+)
+
 router.post('/', create)
 router.get('/:id', findOneById)
 router.put('/:id', updateOneById)

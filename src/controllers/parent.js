@@ -4,6 +4,7 @@ const createError = require('http-errors')
 //Internal Module:
 const Parent = require('../models/Parent')
 const { parentProjection } = require('../models/Projections_Schema')
+const { unlinkSingleImage } = require('../utils/files')
 const { regxSearchQuery } = require('../utils/mongoose')
 const { filterObjectByValues } = require('../utils/object')
 
@@ -20,12 +21,7 @@ const create = async (req, res, next) => {
     let shaped = filterObjectByValues(data._doc, parentProjection.split(' '))
     res.status(201).json(shaped)
   } catch (error) {
-    if (error?._message) {
-      let message = error?.message?.split(':').pop()
-      next(createError(422, message))
-    } else {
-      next(createError(500, error))
-    }
+    next(createError(500, error))
   }
 }
 
@@ -92,14 +88,70 @@ const updateOneById = async (req, res, next) => {
       projection: parentProjection,
     }
     let updatedData = await Parent.findOneAndUpdate(query, req.body, options)
-    res.status(200).json(updatedData)
-  } catch (error) {
-    if (error?._message) {
-      let message = error?.message?.split(':').pop()
-      next(createError(422, message))
-    } else {
-      next(createError(500, error))
+
+    // Check current user is logged in user, if logged in update his access token data
+    if (req.params.id === req?.user?._id) {
+      const accessToken = user.generateJwtToken({
+        user: updatedData,
+        session: req.session,
+      })
+      res.cookie('accessToken', accessToken, {
+        maxAge: process.env.ACCESS_TOKEN,
+        httpOnly: true,
+      })
+      return res
+        .status(200)
+        .json({ user: updatedData, session: req?.session?._id })
     }
+    return res.status(200).json({ user: updatedData })
+  } catch (error) {
+    next(createError(500, error))
+  }
+}
+
+/**
+ * @description Upload Avatar By Id
+ * @Route [POST]- /api/parents/:id/upload
+ * @Access protected - logged in user only
+ * @returns {Object} - Updated User Information and JWT Token after modifing avatar url.
+ */
+const avatarUpload = async (req, res, next) => {
+  try {
+    let query = { _id: req.params.id }
+    let options = { new: true, projection: parentProjection }
+
+    const result = await Parent.findById(query)
+
+    // Check Previous image is uploaded images
+    const uploadedImage = result?.avatar.includes(process.env.APP_IMAGE_PATH)
+
+    if (req.file && uploadedImage) {
+      let removeOldOne = unlinkSingleImage(result.avatar)
+      if (removeOldOne) result.avatar = req.file.link
+    }
+    if (req.file) result.avatar = req.file.link
+
+    const user = await Parent.findByIdAndUpdate(
+      query,
+      { avatar: result.avatar },
+      options
+    )
+
+    if (req.params.id === req?.user?._id) {
+      const accessToken = user.generateJwtToken({
+        user,
+        session: req.session,
+      })
+      res.cookie('accessToken', accessToken, {
+        maxAge: process.env.ACCESS_TOKEN,
+        httpOnly: true,
+      })
+      return res.status(200).json({ user, session: req.session?._id })
+    } else {
+      return res.status(200).json({ user })
+    }
+  } catch (error) {
+    next(createError(500, error))
   }
 }
 
@@ -112,8 +164,12 @@ const updateOneById = async (req, res, next) => {
 const deleteOneById = async (req, res, next) => {
   try {
     let query = { _id: req.params.id }
-    await Parent.findByIdAndDelete(query)
-    res.status(200).json({ deletedCount: 1 })
+
+    let result = await Parent.findByIdAndDelete(query)
+    if (result?.avatar.includes(process.env.APP_IMAGE_PATH))
+      unlinkSingleImage(result.avatar)
+
+    res.status(200).json({ message: 'Entry Deleted' })
   } catch (error) {
     next(createError(500, error))
   }
@@ -125,5 +181,6 @@ module.exports = {
   findOneById,
   findAll,
   updateOneById,
+  avatarUpload,
   deleteOneById,
 }

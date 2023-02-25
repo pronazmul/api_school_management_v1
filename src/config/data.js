@@ -407,7 +407,7 @@ const StudentData = [
 const ParentData = [
   {
     parent_name: 'John Smith Sr.',
-    mobile: '555-555-5555',
+    mobile: '01346000001',
     email: 'jsmithsr@example.com',
     password: 'Password@1234',
     relation: 'Father',
@@ -415,7 +415,7 @@ const ParentData = [
   },
   {
     parent_name: 'Jane Doe Sr.',
-    mobile: '555-555-5556',
+    mobile: '01346000002',
     email: 'jdoesr@example.com',
     password: 'Password@1234',
     relation: 'Mother',
@@ -423,7 +423,7 @@ const ParentData = [
   },
   {
     parent_name: 'Alex Johnson',
-    mobile: '555-555-5557',
+    mobile: '01346000003',
     email: 'ajohnson@example.com',
     password: 'Password@1234',
     relation: 'Guardian',
@@ -431,7 +431,7 @@ const ParentData = [
   },
   {
     parent_name: 'Maria Garcia',
-    mobile: '555-555-5558',
+    mobile: '01346000004',
     email: 'mgarcia@example.com',
     password: 'Password@1234',
     relation: 'Mother',
@@ -439,7 +439,7 @@ const ParentData = [
   },
   {
     parent_name: 'David Lee',
-    mobile: '555-555-5559',
+    mobile: '01346000005',
     email: 'dlee@example.com',
     password: 'Password@1234',
     relation: 'Father',

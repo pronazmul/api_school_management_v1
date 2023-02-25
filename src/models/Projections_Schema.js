@@ -6,6 +6,9 @@ const teacherProjection =
 const studentProjection =
   '_id student_name roll_number mobile email dob gender blood_group avatar address createdAt'
 
+const parentProjection =
+  '_id parent_name mobile relation children avatar createdAt'
+
 const subjectProjection = '_id createdAt'
 
 const attendanceProjection = '_id createdAt '
@@ -19,8 +22,6 @@ const feesProjection = '_id createdAt'
 const marksProjection = '_id createdAt'
 
 const notificationProjection = '_id createdAt'
-
-const parentProjection = '_id createdAt'
 
 module.exports = {
   peopleProjection,
