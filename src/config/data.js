@@ -245,7 +245,7 @@ const StudentData = [
   {
     student_name: 'John Smith',
     roll_number: '2023001',
-    mobile: '555-555-5555',
+    mobile: '01946000001',
     email: 'jsmith@example.com',
     password: 'Password@1234',
     dob: '2005-06-12',
@@ -261,7 +261,7 @@ const StudentData = [
   {
     student_name: 'Jane Doe',
     roll_number: '2023002',
-    mobile: '555-555-5556',
+    mobile: '01946000002',
     email: 'jdoe@example.com',
     password: 'Password@1234',
     dob: '2005-07-15',
@@ -277,7 +277,7 @@ const StudentData = [
   {
     student_name: 'Bob Johnson',
     roll_number: '2023003',
-    mobile: '555-555-5557',
+    mobile: '01946000003',
     email: 'bjohnson@example.com',
     password: 'Password@1234',
     dob: '2006-02-10',
@@ -293,7 +293,7 @@ const StudentData = [
   {
     student_name: 'Alice Smith',
     roll_number: '2023004',
-    mobile: '555-555-5558',
+    mobile: '01946000004',
     email: 'asmith@example.com',
     password: 'Password@1234',
     dob: '2004-12-20',
@@ -309,7 +309,7 @@ const StudentData = [
   {
     student_name: 'David Jones',
     roll_number: '2023005',
-    mobile: '555-555-5559',
+    mobile: '01946000005',
     email: 'djones@example.com',
     password: 'Password@1234',
     dob: '2005-10-30',
@@ -325,7 +325,7 @@ const StudentData = [
   {
     student_name: 'Emily Davis',
     roll_number: '2023006',
-    mobile: '555-555-5560',
+    mobile: '01946000006',
     email: 'edavis@example.com',
     password: 'Password@1234',
     dob: '2006-03-25',
@@ -341,7 +341,7 @@ const StudentData = [
   {
     student_name: 'Alex Rodriguez',
     roll_number: '2023007',
-    mobile: '555-555-5561',
+    mobile: '01946000007',
     email: 'arodriguez@example.com',
     password: 'Password@1234',
     dob: '2004-11-05',
@@ -357,7 +357,7 @@ const StudentData = [
   {
     student_name: 'Samantha Lee',
     roll_number: '2023008',
-    mobile: '555-555-5562',
+    mobile: '01946000008',
     email: 'slee@example.com',
     password: 'Password@1234',
     dob: '2005-09-15',
@@ -373,7 +373,7 @@ const StudentData = [
   {
     student_name: 'George Wilson',
     roll_number: '2023009',
-    mobile: '555-555-5563',
+    mobile: '01946000009',
     email: 'gwilson@example.com',
     password: 'Password@1234',
     dob: '2006-01-01',
@@ -389,7 +389,7 @@ const StudentData = [
   {
     student_name: 'Thiago Silva',
     roll_number: '20230010',
-    mobile: '555-555-5564',
+    mobile: '01946000010',
     email: 'thiago@example.com',
     password: 'Password@1234',
     dob: '2004-01-08',

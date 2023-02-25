@@ -3,23 +3,24 @@ const peopleProjection = '_id name email mobile avatar dob gender createdAt'
 const teacherProjection =
   '_id teacher_name mobile email dob department qualifications avatar address createdAt'
 
-const attendanceProjection = '_id '
+const studentProjection =
+  '_id student_name roll_number mobile email dob gender blood_group avatar address createdAt'
 
-const classProjection = '_id'
+const subjectProjection = '_id createdAt'
 
-const eventProjection = '_id'
+const attendanceProjection = '_id createdAt '
 
-const feesProjection = '_id'
+const classProjection = '_id createdAt'
 
-const marksProjection = '_id'
+const eventProjection = '_id createdAt'
 
-const notificationProjection = '_id'
+const feesProjection = '_id createdAt'
 
-const parentProjection = '_id'
+const marksProjection = '_id createdAt'
 
-const studentProjection = '_id'
+const notificationProjection = '_id createdAt'
 
-const subjectProjection = '_id'
+const parentProjection = '_id createdAt'
 
 module.exports = {
   peopleProjection,
