@@ -23,12 +23,7 @@ const create = async (req, res, next) => {
     )
     res.status(201).json(shaped)
   } catch (error) {
-    if (error?._message) {
-      let message = error?.message?.split(':').pop()
-      next(createError(422, message))
-    } else {
-      next(createError(500, error))
-    }
+    next(createError(500, error))
   }
 }
 
@@ -101,12 +96,7 @@ const updateOneById = async (req, res, next) => {
     )
     res.status(200).json(updatedData)
   } catch (error) {
-    if (error?._message) {
-      let message = error?.message?.split(':').pop()
-      next(createError(422, message))
-    } else {
-      next(createError(500, error))
-    }
+    next(createError(500, error))
   }
 }
 
@@ -120,7 +110,7 @@ const deleteOneById = async (req, res, next) => {
   try {
     let query = { _id: req.params.id }
     await Notification.findByIdAndDelete(query)
-    res.status(200).json({ deletedCount: 1 })
+    res.status(200).json({ message: 'Entry Deleted' })
   } catch (error) {
     next(createError(500, error))
   }

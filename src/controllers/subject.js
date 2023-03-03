@@ -108,7 +108,6 @@ const deleteOneById = async (req, res, next) => {
   try {
     let query = { _id: req.params.id }
     await Subject.findByIdAndDelete(query)
-
     res.status(200).json({ message: 'Entry Deleted' })
   } catch (error) {
     next(createError(500, error))

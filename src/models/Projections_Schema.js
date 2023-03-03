@@ -21,7 +21,7 @@ const feesProjection = '_id createdAt'
 
 const marksProjection = '_id createdAt'
 
-const notificationProjection = '_id createdAt'
+const notificationProjection = '_id title message date createdAt'
 
 module.exports = {
   peopleProjection,
