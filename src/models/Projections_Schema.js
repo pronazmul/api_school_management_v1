@@ -15,7 +15,8 @@ const subjectProjection = '_id subject_name syllabus createdAt'
 
 const attendanceProjection = '_id createdAt '
 
-const eventProjection = '_id createdAt'
+const eventProjection =
+  '_id event_name date startsAt endsAt venue description createdAt'
 
 const feesProjection = '_id createdAt'
 

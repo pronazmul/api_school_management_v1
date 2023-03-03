@@ -20,12 +20,7 @@ const create = async (req, res, next) => {
     let shaped = filterObjectByValues(data._doc, eventProjection.split(' '))
     res.status(201).json(shaped)
   } catch (error) {
-    if (error?._message) {
-      let message = error?.message?.split(':').pop()
-      next(createError(422, message))
-    } else {
-      next(createError(500, error))
-    }
+    next(createError(500, error))
   }
 }
 
@@ -59,7 +54,7 @@ const findAll = async (req, res, next) => {
       limit = process.env.DEFAULT_DATA_LIMIT,
     } = req.query
 
-    const query = search ? regxSearchQuery(search, ['name']) : {}
+    const query = search ? regxSearchQuery(search, ['event_name']) : {}
     const options = { sort: { createdAt: 1 } }
     const totalCount = await Event.countDocuments(query)
 
@@ -94,12 +89,7 @@ const updateOneById = async (req, res, next) => {
     let updatedData = await Event.findOneAndUpdate(query, req.body, options)
     res.status(200).json(updatedData)
   } catch (error) {
-    if (error?._message) {
-      let message = error?.message?.split(':').pop()
-      next(createError(422, message))
-    } else {
-      next(createError(500, error))
-    }
+    next(createError(500, error))
   }
 }
 
@@ -113,7 +103,7 @@ const deleteOneById = async (req, res, next) => {
   try {
     let query = { _id: req.params.id }
     await Event.findByIdAndDelete(query)
-    res.status(200).json({ deletedCount: 1 })
+    res.status(200).json({ message: 'Entry Deleted' })
   } catch (error) {
     next(createError(500, error))
   }
