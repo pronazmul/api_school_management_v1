@@ -447,49 +447,6 @@ const ParentData = [
   },
 ]
 
-const SubjectData = [
-  {
-    subject_name: 'Mathematics',
-    syllabus: ['Algebra', 'Geometry', 'Trigonometry', 'Calculus'],
-  },
-  {
-    subject_name: 'English',
-    syllabus: ['Grammar', 'Literature', 'Writing'],
-  },
-  {
-    subject_name: 'Science',
-    syllabus: ['Biology', 'Chemistry', 'Physics'],
-  },
-  {
-    subject_name: 'Social Studies',
-    syllabus: ['History', 'Geography', 'Civics'],
-  },
-  {
-    subject_name: 'Computer Science',
-    syllabus: ['Programming', 'Data Structures', 'Algorithms'],
-  },
-  {
-    subject_name: 'Art',
-    syllabus: ['Drawing', 'Painting', 'Sculpture'],
-  },
-  {
-    subject_name: 'Music',
-    syllabus: ['Theory', 'Composition', 'Performance'],
-  },
-  {
-    subject_name: 'Physical Education',
-    syllabus: ['Sports', 'Fitness', 'Health'],
-  },
-  {
-    subject_name: 'Languages',
-    syllabus: ['French', 'Spanish', 'German'],
-  },
-  {
-    subject_name: 'Economics',
-    syllabus: ['Microeconomics', 'Macroeconomics', 'International Trade'],
-  },
-]
-
 const ClassData = [
   {
     class_name: 1,
@@ -602,6 +559,49 @@ const ClassData = [
         end_time: '12:00',
       },
     ],
+  },
+]
+
+const SubjectData = [
+  {
+    subject_name: 'Mathematics',
+    syllabus: ['Algebra', 'Geometry', 'Trigonometry', 'Calculus'],
+  },
+  {
+    subject_name: 'English',
+    syllabus: ['Grammar', 'Literature', 'Writing'],
+  },
+  {
+    subject_name: 'Science',
+    syllabus: ['Biology', 'Chemistry', 'Physics'],
+  },
+  {
+    subject_name: 'Social Studies',
+    syllabus: ['History', 'Geography', 'Civics'],
+  },
+  {
+    subject_name: 'Computer Science',
+    syllabus: ['Programming', 'Data Structures', 'Algorithms'],
+  },
+  {
+    subject_name: 'Art',
+    syllabus: ['Drawing', 'Painting', 'Sculpture'],
+  },
+  {
+    subject_name: 'Music',
+    syllabus: ['Theory', 'Composition', 'Performance'],
+  },
+  {
+    subject_name: 'Physical Education',
+    syllabus: ['Sports', 'Fitness', 'Health'],
+  },
+  {
+    subject_name: 'Languages',
+    syllabus: ['French', 'Spanish', 'German'],
+  },
+  {
+    subject_name: 'Economics',
+    syllabus: ['Microeconomics', 'Macroeconomics', 'International Trade'],
   },
 ]
 

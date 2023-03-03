@@ -9,11 +9,11 @@ const studentProjection =
 const parentProjection =
   '_id parent_name mobile relation children avatar createdAt'
 
-const subjectProjection = '_id createdAt'
+const classProjection = '_id class_name number_of_students schedule createdAt'
+
+const subjectProjection = '_id subject_name syllabus createdAt'
 
 const attendanceProjection = '_id createdAt '
-
-const classProjection = '_id createdAt'
 
 const eventProjection = '_id createdAt'
 

@@ -2,20 +2,26 @@
 const router = require('express').Router()
 
 // Controller:
-const {} = require('../controllers/mark')
+const {
+  create,
+  findOneById,
+  findAll,
+  updateOneById,
+  deleteOneById,
+} = require('../controllers/subject')
 
-// Middlewares
+// Middlewares:
 const validateRequest = require('../middlewares/validateRequest')
 const { updateUserSchema } = require('../schema/userSchema')
 const { singleConvertToWebp } = require('../middlewares/upload/imageConverter')
 const { singleUploader } = require('../middlewares/upload/imageUploader')
 
 //Routes:
-router.post('/', (req, res) => {})
-router.get('/:id', (req, res) => {})
-router.put('/:id', (req, res) => {})
-router.delete('/:id', (req, res) => {})
-router.get('/', (req, res) => {})
+router.post('/', create)
+router.get('/:id', findOneById)
+router.put('/:id', updateOneById)
+router.delete('/:id', deleteOneById)
+router.get('/', findAll)
 
 // Exports
 module.exports = router
