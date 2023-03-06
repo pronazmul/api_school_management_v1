@@ -17,9 +17,8 @@ const AttendanceSchema = mongoose.Schema(
           ref: 'Student',
         },
         status: {
-          type: String,
-          enum: ['present', 'absent'],
-          default: 'present',
+          type: Boolean,
+          default: false,
         },
       },
     ],

@@ -5,6 +5,10 @@ let uniqueValidator = require('mongoose-unique-validator')
 const StudentSchema = mongoose.Schema(
   {
     student_name: String,
+    class: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Class',
+    },
     roll_number: { type: String, unique: true },
     mobile: { type: String, unique: true },
     email: { type: String, unique: true },

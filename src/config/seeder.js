@@ -79,11 +79,25 @@ const importData = async () => {
     const teacherArray = await TeacherModel.insertMany(hashedTeacher)
     const teacherIds = teacherArray.map((data) => data._id)
 
-    //IMPORT STUDENTS
+    // IMPORT CLASSES
+    const prepareClasses = ClassData.map((item) => {
+      let teacher_in_charge = randomValueFromArray(teacherIds)
+      return {
+        ...item,
+        teacher_in_charge,
+      }
+    })
+    const classArray = await ClassModel.insertMany(prepareClasses)
+    const classIds = classArray.map((data) => data._id)
 
+    //IMPORT STUDENTS
     const hashedStudents = await Promise.all(
       StudentData.map(async (doc) => {
-        return { ...doc, password: await bcrypt.hash(doc.password, 10) }
+        return {
+          ...doc,
+          password: await bcrypt.hash(doc.password, 10),
+          class: randomValueFromArray(classIds),
+        }
       })
     )
     const studentArray = await StudentModel.insertMany(hashedStudents)
@@ -115,17 +129,6 @@ const importData = async () => {
     })
     const subjectArray = await SubjectModel.insertMany(prepareSubjects)
     const subjectIds = subjectArray.map((data) => data._id)
-
-    // IMPORT CLASSES
-    const prepareClasses = ClassData.map((item) => {
-      let teacher_in_charge = randomValueFromArray(teacherIds)
-      return {
-        ...item,
-        teacher_in_charge,
-      }
-    })
-    const classArray = await ClassModel.insertMany(prepareClasses)
-    const classIds = classArray.map((data) => data._id)
 
     // IMPORT FEES DATA
     const prepareFees = FeesData.map((item) => {

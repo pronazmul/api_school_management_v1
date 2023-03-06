@@ -3,11 +3,11 @@ const router = require('express').Router()
 
 // Controller:
 const {
-  create,
+  generateAttandance,
   findOneById,
-  findAll,
   deleteOneById,
   updateOneById,
+  individualStudentReport,
 } = require('../controllers/attendance')
 
 // Middlewares
@@ -17,11 +17,11 @@ const { singleConvertToWebp } = require('../middlewares/upload/imageConverter')
 const { singleUploader } = require('../middlewares/upload/imageUploader')
 
 //Routes:
-router.post('/', create)
-router.get('/:id', findOneById)
-router.put('/:id', updateOneById)
-router.delete('/:id', deleteOneById)
-router.get('/', findAll)
+router.get('/:classID', generateAttandance)
+router.put('/:attendanceID', updateOneById)
+router.get('/:attendanceID', findOneById)
+router.delete('/:attendanceID', deleteOneById)
 
+router.get('/:studentID', individualStudentReport)
 // Exports
 module.exports = router

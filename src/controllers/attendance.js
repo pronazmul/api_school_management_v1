@@ -3,19 +3,29 @@ const createError = require('http-errors')
 
 //Internal Module:
 const Attendance = require('../models/Attendance')
+const Student = require('../models/Student')
 const { attendanceProjection } = require('../models/Projections_Schema')
 const { regxSearchQuery } = require('../utils/mongoose')
 const { filterObjectByValues } = require('../utils/object')
 
 /**
  * @desc Create
- * @Route [POST]- /api/v1/attendances
+ * @Route [POST]- /api/v1/attendances/:classID
  * @Access protected - [auth]
  * @returns {OBJECT}
  */
-const create = async (req, res, next) => {
+const generateAttandance = async (req, res, next) => {
   try {
-    let newData = new Attendance({ ...req.body })
+    let classID = req.params.classID
+    let students = await Student.find({ class: classID }, '_id')
+
+    let newData = new Attendance({
+      class: classID,
+      attendance: students.map((id) => ({ student: id })),
+    })
+
+    return res.json(newData)
+
     let attendance = await newData.save()
     let shaped = filterObjectByValues(
       attendance._doc,
@@ -34,7 +44,7 @@ const create = async (req, res, next) => {
 
 /**
  * @description Get Single Data
- * @Route [GET]- /api/v1/attendances/:id
+ * @Route [GET]- /api/v1/attendances/:attendanceID
  * @Access protected - [auth]
  * @returns {Object}
  */
@@ -49,41 +59,8 @@ const findOneById = async (req, res, next) => {
 }
 
 /**
- * @desc Get All Data
- * @Route [GET]- /api/v1/attendances
- * @Access protected - [auth]
- * @returns {Array<JSON>}
- */
-const findAll = async (req, res, next) => {
-  try {
-    const {
-      search,
-      page = process.env.DEFAULT_PAGE,
-      limit = process.env.DEFAULT_DATA_LIMIT,
-    } = req.query
-
-    const query = search ? regxSearchQuery(search, ['name']) : {}
-    const options = { sort: { createdAt: 1 } }
-    const totalCount = await Attendance.countDocuments(query)
-
-    const data = await Attendance.find(query, attendanceProjection, options)
-      .limit(limit)
-      .skip(limit * (page - 1))
-
-    res.set('x-total-count', totalCount)
-
-    if (totalCount) {
-      return res.status(200).json(data)
-    }
-    return next(createError(404, 'No Data found!'))
-  } catch (error) {
-    next(createError(500, error))
-  }
-}
-
-/**
  * @desc Update Data
- * @Route [PUT]- /api/v1/attendances/:id
+ * @Route [PUT]- /api/v1/attendances/:attendanceID
  * @Access protected - [auth]
  * @returns {JSON} - Updated Object
  */
@@ -112,7 +89,7 @@ const updateOneById = async (req, res, next) => {
 
 /**
  * @desc Delete single
- * @Route [DELETE]- /api/v1/attendances/:id
+ * @Route [DELETE]- /api/v1/attendances/:attendanceID
  * @Access protected - [auth]
  * @returns {Boolean}
  */
@@ -126,11 +103,27 @@ const deleteOneById = async (req, res, next) => {
   }
 }
 
+/**
+ * @description Get Single Data
+ * @Route [GET]- /api/v1/attendances/:studentID
+ * @Access protected - [auth]
+ * @returns {Object}
+ */
+const individualStudentReport = async (req, res, next) => {
+  try {
+    let query = { _id: req.params.id }
+    const data = await Attendance.findOne(query, attendanceProjection)
+    res.status(200).json(data)
+  } catch (error) {
+    next(createError(500, error))
+  }
+}
+
 //Export Module:
 module.exports = {
-  create,
+  generateAttandance,
   findOneById,
-  findAll,
   updateOneById,
   deleteOneById,
+  individualStudentReport,
 }
