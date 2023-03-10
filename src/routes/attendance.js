@@ -17,7 +17,7 @@ const { singleConvertToWebp } = require('../middlewares/upload/imageConverter')
 const { singleUploader } = require('../middlewares/upload/imageUploader')
 
 //Routes:
-router.get('/:classID', generateAttandance)
+router.get('/generate/:classID', generateAttandance)
 router.put('/:attendanceID', updateOneById)
 router.get('/:attendanceID', findOneById)
 router.delete('/:attendanceID', deleteOneById)

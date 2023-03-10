@@ -13,7 +13,7 @@ const classProjection = '_id class_name number_of_students schedule createdAt'
 
 const subjectProjection = '_id subject_name syllabus createdAt'
 
-const attendanceProjection = '_id createdAt '
+const attendanceProjection = '_id date class attendance createdAt '
 
 const eventProjection =
   '_id event_name date startsAt endsAt venue description createdAt'

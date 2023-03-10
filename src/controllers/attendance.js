@@ -17,28 +17,26 @@ const { filterObjectByValues } = require('../utils/object')
 const generateAttandance = async (req, res, next) => {
   try {
     let classID = req.params.classID
-    let students = await Student.find({ class: classID }, '_id')
+    let date = req.query.date
+    let students = await Student.find({ class: classID }, '_id name')
 
-    let newData = new Attendance({
+    let newAttandance = new Attendance({
       class: classID,
-      attendance: students.map((id) => ({ student: id })),
+      date,
+      attendance: students.map((std) => ({
+        student: std?._id,
+      })),
     })
 
-    return res.json(newData)
+    let attendance = await newAttandance.save()
 
-    let attendance = await newData.save()
     let shaped = filterObjectByValues(
       attendance._doc,
       attendanceProjection.split(' ')
     )
     res.status(201).json(shaped)
   } catch (error) {
-    if (error?._message) {
-      let message = error?.message?.split(':').pop()
-      next(createError(422, message))
-    } else {
-      next(createError(500, error))
-    }
+    next(createError(500, error))
   }
 }
 
@@ -50,7 +48,7 @@ const generateAttandance = async (req, res, next) => {
  */
 const findOneById = async (req, res, next) => {
   try {
-    let query = { _id: req.params.id }
+    let query = { _id: req.params.attendanceID }
     const data = await Attendance.findOne(query, attendanceProjection)
     res.status(200).json(data)
   } catch (error) {
@@ -66,24 +64,21 @@ const findOneById = async (req, res, next) => {
  */
 const updateOneById = async (req, res, next) => {
   try {
-    let query = { _id: req.params.id }
-    let options = {
-      new: true,
-      projection: attendanceProjection,
-    }
+    let query = { _id: req?.params?.attendanceID }
+    let students = req?.body?.students
+
     let updatedData = await Attendance.findOneAndUpdate(
       query,
-      req.body,
-      options
+      { $set: { 'attendance.$[element].status': true } },
+      {
+        arrayFilters: [{ 'element.student': { $in: students } }],
+        new: true,
+        projection: attendanceProjection,
+      }
     )
     res.status(200).json(updatedData)
   } catch (error) {
-    if (error?._message) {
-      let message = error?.message?.split(':').pop()
-      next(createError(422, message))
-    } else {
-      next(createError(500, error))
-    }
+    next(createError(500, error))
   }
 }
 
@@ -95,9 +90,9 @@ const updateOneById = async (req, res, next) => {
  */
 const deleteOneById = async (req, res, next) => {
   try {
-    let query = { _id: req.params.id }
+    let query = { _id: req.params.attendanceID }
     await Attendance.findByIdAndDelete(query)
-    res.status(200).json({ deletedCount: 1 })
+    res.status(200).json({ message: 'Entry Deleted' })
   } catch (error) {
     next(createError(500, error))
   }

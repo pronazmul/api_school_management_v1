@@ -20,12 +20,7 @@ const create = async (req, res, next) => {
     let shaped = filterObjectByValues(data._doc, feesProjection.split(' '))
     res.status(201).json(shaped)
   } catch (error) {
-    if (error?._message) {
-      let message = error?.message?.split(':').pop()
-      next(createError(422, message))
-    } else {
-      next(createError(500, error))
-    }
+    next(createError(500, error))
   }
 }
 
@@ -94,12 +89,7 @@ const updateOneById = async (req, res, next) => {
     let updatedData = await Fees.findOneAndUpdate(query, req.body, options)
     res.status(200).json(updatedData)
   } catch (error) {
-    if (error?._message) {
-      let message = error?.message?.split(':').pop()
-      next(createError(422, message))
-    } else {
-      next(createError(500, error))
-    }
+    next(createError(500, error))
   }
 }
 
